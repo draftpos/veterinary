@@ -83,7 +83,7 @@ app_license = "mit"
 # ------------
 
 # before_install = "veterinary.install.before_install"
-# after_install = "veterinary.install.after_install"
+after_install = "veterinary.www.install_defaults.install_all"
 
 # Uninstallation
 # ------------

@@ -1,30 +1,45 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "field:species",
  "creation": "2025-12-10 11:37:09.116895",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "species_name"
+  "species"
  ],
  "fields": [
   {
-   "fieldname": "species_name",
+   "fieldname": "species",
    "fieldtype": "Data",
-   "label": "Species Name"
+   "label": "Species ",
+   "unique": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
- "istable": 1,
  "links": [],
- "modified": "2025-12-10 11:37:41.111784",
+ "modified": "2025-12-13 11:02:44.442155",
  "modified_by": "Administrator",
  "module": "Veterinary",
  "name": "Species",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
- "permissions": [],
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
