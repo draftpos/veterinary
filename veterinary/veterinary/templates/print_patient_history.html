@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient Medical History</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        html, body {
+            font-size: 0.80rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .report-container {
+            max-width: 900px;
+            margin: 20px auto;
+        }
+
+        .card {
+            font-size: 0.85rem;
+        }
+
+        /* ================= FIXED TABLE LAYOUT ================= */
+        .vitals-table {
+            table-layout: fixed;
+            width: 100%;
+        }
+
+        .vitals-table th.vital,
+        .vitals-table td.vital {
+            width: 60px; /* 👈 change here if needed */
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .vitals-table th.drugs,
+        .vitals-table td.drugs {
+            width: auto;
+            white-space: normal;
+            word-wrap: break-word;
+        }
+
+        /* ================= VISIT STYLING ================= */
+        .visit-block {
+            border-left: 4px solid #0d6efd;
+            padding-left: 12px;
+        }
+
+        .history-separator {
+            border: 0;
+            border-top: 1px dashed #bbb;
+            margin: 20px 0;
+        }
+
+        @media print {
+            body {
+                font-size: 12px;
+            }
+
+            .row {
+                display: flex !important;
+                flex-wrap: nowrap !important;
+            }
+
+            .col-md-4 {
+                flex: 0 0 33.3333% !important;
+                max-width: 33.3333% !important;
+            }
+
+            .card {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="report-container">
+
+    <!-- ================= Patient Info ================= -->
+    <div class="card mb-4 p-3 shadow-sm">
+        <h4 class="mb-3 text-center">Patient History</h4>
+
+        <div class="row">
+            <div class="col-md-4">
+                <p><b>Owner:</b> {{ patient_info.patient_owner }}</p>
+                <p><b>Name:</b> {{ patient_info.patient_name }}</p>
+                <p><b>Colour:</b> {{ patient_info.colour }}</p>
+            </div>
+
+            <div class="col-md-4">
+                <p><b>DOB:</b> {{ patient_info.dob }}</p>
+                <p><b>Sex:</b> {{ patient_info.sex }}</p>
+            </div>
+
+            <div class="col-md-4">
+                <p><b>Breed:</b> {{ patient_info.breed }}</p>
+                <p><b>Species:</b> {{ patient_info.species }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= Visit History ================= -->
+    {% for row in history %}
+    <div class="visit-block">
+        <div class="card p-3 shadow-sm">
+
+            <!-- Visit header -->
+            <div style="display:flex; justify-content:space-between; font-size:11px; font-weight:bold; margin-bottom:8px;">
+                <span>Date: {{ row.visit_date }}</span>
+                <span>Reference: {{ row.quotation }}</span>
+            </div>
+
+            <!-- Vitals + Drugs -->
+            <table class="table table-striped mb-3 vitals-table">
+                <thead class="table-light">
+                    <tr>
+                        <th class="vital" style="color:#0d6efd;">Weight</th>
+                        <th class="vital" style="color:#0d6efd;">HR</th>
+                        <th class="vital" style="color:#0d6efd;">RR</th>
+                        <th class="vital" style="color:#0d6efd;">HYD</th>
+                        <th class="vital" style="color:#0d6efd;">CRT</th>
+                        <th class="drugs" style="color:#0d6efd;">Drugs</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="vital">{{ row.weight }}</td>
+                        <td class="vital">{{ row.hr }}</td>
+                        <td class="vital">{{ row.rr }}</td>
+                        <td class="vital">{{ row.hyd }}</td>
+                        <td class="vital">{{ row.crt }}</td>
+                        <td class="drugs">{{ row.items_used }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Complaint + Diagnosis -->
+            <table class="table table-striped">
+                <thead class="table-light">
+                    <tr>
+                        <th style="color:#0d6efd;">Complaint</th>
+                        <th style="color:#0d6efd;">Diagnosis</th>
+                        <th style="color:#0d6efd;">Differential Diagnosis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ row.complaint }}</td>
+                        <td>{{ row.diagnosis }}</td>
+                        <td>{{ row.differential_diagnosis }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    {% if not loop.last %}
+        <hr class="history-separator">
+    {% endif %}
+    {% endfor %}
+
+</div>
+
+</body>
+</html>

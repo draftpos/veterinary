@@ -8,6 +8,7 @@
  "field_order": [
   "column_break_xxxh",
   "patient_name",
+  "patient_owner",
   "sex",
   "date_of_birth",
   "species",
@@ -41,6 +42,7 @@
    "options": "Patient Name"
   },
   {
+   "fetch_from": "patient_name.sex",
    "fieldname": "sex",
    "fieldtype": "Link",
    "in_filter": 1,
@@ -52,6 +54,7 @@
    "options": "Pet Sex"
   },
   {
+   "fetch_from": "patient_name.species",
    "fieldname": "species",
    "fieldtype": "Link",
    "in_filter": 1,
@@ -72,6 +75,7 @@
    "label": "Weight"
   },
   {
+   "fetch_from": "patient_name.colour",
    "fieldname": "colour",
    "fieldtype": "Link",
    "in_filter": 1,
@@ -83,6 +87,7 @@
    "options": "Pet Colour"
   },
   {
+   "fetch_from": "patient_name.dob",
    "fieldname": "date_of_birth",
    "fieldtype": "Date",
    "in_filter": 1,
@@ -92,6 +97,7 @@
    "label": "Date of Birth"
   },
   {
+   "fetch_from": "patient_name.breed",
    "fieldname": "breed",
    "fieldtype": "Link",
    "in_filter": 1,
@@ -182,13 +188,21 @@
   {
    "fieldname": "column_break_kzmo",
    "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "patient_name.patient_owner",
+   "fieldname": "patient_owner",
+   "fieldtype": "Link",
+   "label": "Patient Owner",
+   "options": "Customer",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-12-15 14:29:12.164748",
+ "modified": "2025-12-15 16:33:46.282451",
  "modified_by": "Administrator",
  "module": "Veterinary",
  "name": "Pet Details",

@@ -5,19 +5,65 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "patient_name"
+  "patient_name",
+  "patient_owner",
+  "colour",
+  "dob",
+  "column_break_vkcg",
+  "sex",
+  "species",
+  "breed"
  ],
  "fields": [
   {
    "fieldname": "patient_name",
    "fieldtype": "Data",
    "label": "Patient Name"
+  },
+  {
+   "fieldname": "patient_owner",
+   "fieldtype": "Link",
+   "label": "Patient Owner",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "colour",
+   "fieldtype": "Link",
+   "label": "Colour",
+   "options": "Pet Colour"
+  },
+  {
+   "fieldname": "column_break_vkcg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sex",
+   "fieldtype": "Link",
+   "label": "Sex",
+   "options": "Pet Sex"
+  },
+  {
+   "fieldname": "species",
+   "fieldtype": "Link",
+   "label": "Species",
+   "options": "Species"
+  },
+  {
+   "fieldname": "breed",
+   "fieldtype": "Link",
+   "label": "Breed",
+   "options": "Pet Breed"
+  },
+  {
+   "fieldname": "dob",
+   "fieldtype": "Date",
+   "label": "D.O.B"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-12 14:53:52.103777",
+ "modified": "2025-12-15 16:29:49.012908",
  "modified_by": "Administrator",
  "module": "Veterinary",
  "name": "Patient Name",
@@ -39,7 +85,9 @@
  ],
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "patient_name"
 }
