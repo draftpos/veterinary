@@ -5,13 +5,22 @@ from frappe import _
 def execute(filters=None):
     filters = filters or {}
 
+    patient_owner = filters.get("patient_owner")
     patient_name = filters.get("patient_name")
     from_date = filters.get("from_date")
     to_date = filters.get("to_date")
 
+    history = get_pet_history(
+        patient_name=patient_name,
+        patient_owner=patient_owner,
+        from_date=from_date,
+        to_date=to_date
+    )
+
     columns = [
         {"label": "Visit Date", "fieldname": "visit_date", "fieldtype": "Date"},
         {"label": "Patient", "fieldname": "patient_name", "fieldtype": "Data"},
+        {"label": "Owner", "fieldname": "patient_owner", "fieldtype": "Data"},
         {"label": "Complaint", "fieldname": "complaint", "fieldtype": "Data"},
         {"label": "Diagnosis", "fieldname": "diagnosis", "fieldtype": "Data"},
         {"label": "Differential Diagnosis", "fieldname": "differential_diagnosis", "fieldtype": "Data"},
@@ -23,19 +32,24 @@ def execute(filters=None):
         {"label": "Items Used", "fieldname": "items_used", "fieldtype": "Data"},
     ]
 
-    history = get_pet_history(patient_name, from_date, to_date)
-
     return columns, history
 
+def get_pet_history(patient_name=None, patient_owner=None, from_date=None, to_date=None):
+    conditions = ["po.docstatus = 1"]
+    values = []
 
-def get_pet_history(patient_name, from_date=None, to_date=None):
-    # Fetch submitted quotations with the pet details
-    conditions = ["po.docstatus=1", "pet.patient_name=%s"]
-    values = [patient_name]
+    if patient_name:
+        conditions.append("pet.patient_name = %s")
+        values.append(patient_name)
+
+    if patient_owner:
+        conditions.append("pet.patient_owner = %s")
+        values.append(patient_owner)
 
     if from_date:
         conditions.append("po.transaction_date >= %s")
         values.append(from_date)
+
     if to_date:
         conditions.append("po.transaction_date <= %s")
         values.append(to_date)
@@ -46,6 +60,8 @@ def get_pet_history(patient_name, from_date=None, to_date=None):
         SELECT
             po.name AS quotation,
             po.transaction_date AS visit_date,
+            pet.patient_name,
+            pet.patient_owner,
             pet.complaint,
             pet.diagnosis,
             pet.differential_diagnosis,
@@ -65,12 +81,8 @@ def get_pet_history(patient_name, from_date=None, to_date=None):
         ORDER BY po.transaction_date DESC
     """
 
-    results = frappe.db.sql(query, values, as_dict=True)
-    print("🟢 Pet history results:", results)
-    return results
+    return frappe.db.sql(query, values, as_dict=True)
 
-
-# Called by your JS Print button
 @frappe.whitelist()
 def print_patient_history(filters):
     import json
