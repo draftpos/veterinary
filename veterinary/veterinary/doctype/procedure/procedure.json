@@ -1,0 +1,90 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-04-14 10:43:29.805296",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_botl",
+  "patient_name",
+  "patient_owner",
+  "doctor_name",
+  "start_time",
+  "end_time",
+  "medical_examination",
+  "drugs"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_botl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "patient_name",
+   "fieldtype": "Link",
+   "label": "patient name",
+   "options": "Patient Details"
+  },
+  {
+   "fieldname": "patient_owner",
+   "fieldtype": "Link",
+   "label": "patient owner",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "doctor_name",
+   "fieldtype": "Link",
+   "label": "doctor name",
+   "options": "User"
+  },
+  {
+   "fieldname": "start_time",
+   "fieldtype": "Datetime",
+   "label": "start time"
+  },
+  {
+   "fieldname": "end_time",
+   "fieldtype": "Data",
+   "label": "end time"
+  },
+  {
+   "fieldname": "medical_examination",
+   "fieldtype": "Link",
+   "label": "medical examination",
+   "options": "Pet Order"
+  },
+  {
+   "fieldname": "drugs",
+   "fieldtype": "Table",
+   "label": "drugs",
+   "options": "Drug Detail"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-04-14 10:54:30.180035",
+ "modified_by": "Administrator",
+ "module": "Veterinary",
+ "name": "Procedure",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

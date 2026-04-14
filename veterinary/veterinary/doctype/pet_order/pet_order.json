@@ -1,0 +1,156 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-04-14 10:49:09.033506",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_xllp",
+  "is_group",
+  "is_admited",
+  "patient_name",
+  "patients",
+  "physical_examination_section",
+  "hyd",
+  "crt",
+  "weight",
+  "rr",
+  "hr",
+  "section_break_njzr",
+  "differential_diagnosis",
+  "diagnosis",
+  "complaint",
+  "advices",
+  "section_break_njky",
+  "prescriptions"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_xllp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_group",
+   "fieldtype": "Check",
+   "label": "Is group"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_admited",
+   "fieldtype": "Check",
+   "label": "is admited"
+  },
+  {
+   "depends_on": "eval:doc.is_group == 0",
+   "fieldname": "patient_name",
+   "fieldtype": "Link",
+   "label": "Patient name",
+   "options": "Patient Details"
+  },
+  {
+   "fieldname": "prescriptions",
+   "fieldtype": "Table",
+   "label": "Prescriptions",
+   "options": "Prescription Item"
+  },
+  {
+   "collapsible": 1,
+   "collapsible_depends_on": "sb_physical_exam",
+   "fieldname": "physical_examination_section",
+   "fieldtype": "Section Break",
+   "label": "Physical Examination"
+  },
+  {
+   "fieldname": "hyd",
+   "fieldtype": "Select",
+   "label": "HYD",
+   "options": "Normal/Abnormal"
+  },
+  {
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "label": "Weight"
+  },
+  {
+   "fieldname": "crt",
+   "fieldtype": "Data",
+   "label": "CRT"
+  },
+  {
+   "fieldname": "rr",
+   "fieldtype": "Data",
+   "label": "RR"
+  },
+  {
+   "fieldname": "hr",
+   "fieldtype": "Data",
+   "label": "HR"
+  },
+  {
+   "collapsible": 1,
+   "collapsible_depends_on": "sb_medical_exam",
+   "fieldname": "section_break_njzr",
+   "fieldtype": "Section Break",
+   "label": "Medical Examination"
+  },
+  {
+   "fieldname": "differential_diagnosis",
+   "fieldtype": "Text Editor",
+   "label": "Differential Diagnosis"
+  },
+  {
+   "fieldname": "diagnosis",
+   "fieldtype": "Text Editor",
+   "label": "Diagnosis"
+  },
+  {
+   "fieldname": "complaint",
+   "fieldtype": "Text Editor",
+   "label": "Complaint"
+  },
+  {
+   "fieldname": "advices",
+   "fieldtype": "Text Editor",
+   "label": "Advices"
+  },
+  {
+   "depends_on": "is_group",
+   "fieldname": "patients",
+   "fieldtype": "Table",
+   "label": "Patients",
+   "options": "Patient Details"
+  },
+  {
+   "fieldname": "section_break_njky",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-04-14 11:27:12.577783",
+ "modified_by": "Administrator",
+ "module": "Veterinary",
+ "name": "Pet Order",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,57 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-04-14 11:00:54.424255",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_pgjc",
+  "patient_name",
+  "vaccination_details"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_pgjc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "patient_name",
+   "fieldtype": "Link",
+   "label": "patient name",
+   "options": "Patient Details"
+  },
+  {
+   "fieldname": "vaccination_details",
+   "fieldtype": "Table",
+   "label": "vaccination details",
+   "options": "Vaccination Detail"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-04-14 11:02:49.211736",
+ "modified_by": "Administrator",
+ "module": "Veterinary",
+ "name": "Vaccinations",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

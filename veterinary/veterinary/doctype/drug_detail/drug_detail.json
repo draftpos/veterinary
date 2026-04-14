@@ -1,0 +1,44 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-04-14 10:46:55.965161",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_6zpy",
+  "drug_item",
+  "quantity"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_6zpy",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "drug_item",
+   "fieldtype": "Link",
+   "label": "drug item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "quantity",
+   "fieldtype": "Float",
+   "label": "quantity"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-04-14 10:47:56.749106",
+ "modified_by": "Administrator",
+ "module": "Veterinary",
+ "name": "Drug Detail",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

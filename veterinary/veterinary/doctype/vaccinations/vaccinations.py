@@ -1,9 +1,9 @@
-# Copyright (c) 2025, chirovemunyaradzi@gmail.com and contributors
+# Copyright (c) 2026, chirovemunyaradzi@gmail.com and contributors
 # For license information, please see license.txt
 
 # import frappe
 from frappe.model.document import Document
 
 
-class PatientName(Document):
+class Vaccinations(Document):
 	pass
