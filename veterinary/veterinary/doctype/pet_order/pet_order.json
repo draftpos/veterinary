@@ -46,7 +46,7 @@
    "fieldname": "patient_name",
    "fieldtype": "Link",
    "label": "Patient name",
-   "options": "Patient Details"
+   "options": "Patient Name"
   },
   {
    "fieldname": "prescriptions",
@@ -119,7 +119,7 @@
    "fieldname": "patients",
    "fieldtype": "Table",
    "label": "Patients",
-   "options": "Patient Details"
+   "options": "Patient Name"
   },
   {
    "fieldname": "section_break_njky",

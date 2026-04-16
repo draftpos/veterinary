@@ -140,7 +140,7 @@
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Pet Name",
-   "options": "Patient Details"
+   "options": "Patient Name"
   },
   {
    "fetch_from": "pet_name.patient_name",

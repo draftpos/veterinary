@@ -33,9 +33,9 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Patient Details",
+   "label": "Patient Name",
    "link_count": 0,
-   "link_to": "Patient Details",
+   "link_to": "Patient Name",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -170,8 +170,8 @@
   },
   {
    "doc_view": "",
-   "label": "Patient Details",
-   "link_to": "Patient Details",
+   "label": "Patient Name",
+   "link_to": "Patient Name",
    "type": "DocType"
   },
   {

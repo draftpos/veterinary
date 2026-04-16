@@ -45,7 +45,7 @@
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Patient Name",
-   "options": "Patient Namee"
+   "options": "Patient Name"
   },
   {
    "fetch_from": "patient_name.sex",
@@ -198,7 +198,7 @@
   {
    "fieldname": "patient_details_section",
    "fieldtype": "Section Break",
-   "label": "Patient Details"
+   "label": "Patient Name"
   },
   {
    "fieldname": "column_break_txdh",
