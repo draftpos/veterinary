@@ -45,7 +45,7 @@
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Patient Name",
-   "options": "Patient Details"
+   "options": "Patient Namee"
   },
   {
    "fetch_from": "patient_name.sex",
@@ -236,7 +236,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-04-14 10:39:19.911956",
+ "modified": "2026-04-16 07:58:10.068805",
  "modified_by": "Administrator",
  "module": "Veterinary",
  "name": "Pet Details",

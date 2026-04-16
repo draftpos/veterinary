@@ -1,0 +1,245 @@
+{
+ "charts": [],
+ "content": "[]",
+ "creation": "2026-04-16 07:24:04.779735",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "hide_custom": 0,
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "Veterinary",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Veterinary",
+   "link_count": 0,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Pet Details",
+   "link_count": 0,
+   "link_to": "Pet Details",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Patient Details",
+   "link_count": 0,
+   "link_to": "Patient Details",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Pet Order",
+   "link_count": 0,
+   "link_to": "Pet Order",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Admissions",
+   "link_count": 0,
+   "link_to": "Admissions",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Vaccinations",
+   "link_count": 0,
+   "link_to": "Vaccinations",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Post Mortem Report",
+   "link_count": 0,
+   "link_to": "Post Mortem Report",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Pet History",
+   "link_count": 0,
+   "link_to": "Pet History",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Prescription Item",
+   "link_count": 0,
+   "link_to": "Prescription Item",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Procedure",
+   "link_count": 0,
+   "link_to": "Procedure",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Species",
+   "link_count": 0,
+   "link_to": "Species",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Pet Breed",
+   "link_count": 0,
+   "link_to": "Pet Breed",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Pet Colour",
+   "link_count": 0,
+   "link_to": "Pet Colour",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Pet Sex",
+   "link_count": 0,
+   "link_to": "Pet Sex",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-04-16 07:30:58.058415",
+ "modified_by": "Administrator",
+ "module": "Veterinary",
+ "name": "Veterinary",
+ "number_cards": [],
+ "owner": "Administrator",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 0.0,
+ "shortcuts": [
+  {
+   "doc_view": "",
+   "label": "Pet Details",
+   "link_to": "Pet Details",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "",
+   "label": "Patient Details",
+   "link_to": "Patient Details",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "",
+   "label": "Pet Order",
+   "link_to": "Pet Order",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "",
+   "label": "Admissions",
+   "link_to": "Admissions",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "",
+   "label": "Vaccinations",
+   "link_to": "Vaccinations",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "",
+   "label": "Post Mortem Report",
+   "link_to": "Post Mortem Report",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "",
+   "label": "Pet History",
+   "link_to": "Pet History",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "",
+   "label": "Prescription Item",
+   "link_to": "Prescription Item",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "",
+   "label": "Procedure",
+   "link_to": "Procedure",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "",
+   "label": "Species",
+   "link_to": "Species",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "",
+   "label": "Pet Breed",
+   "link_to": "Pet Breed",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "",
+   "label": "Pet Colour",
+   "link_to": "Pet Colour",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "",
+   "label": "Pet Sex",
+   "link_to": "Pet Sex",
+   "type": "DocType"
+  }
+ ],
+ "title": "Veterinary"
+}
