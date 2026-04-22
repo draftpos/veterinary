@@ -1,0 +1,204 @@
+{
+ "actions": [],
+ "allow_import": 0,
+ "allow_rename": 0,
+ "autoname": "field:patient_name",
+ "creation": "2026-10-01",
+ "doctype": "DocType",
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "patient_details_tabs",
+  "patient_name_section",
+  "patient_name",
+  "column_break_basic",
+  "patient_owner",
+  "sex",
+  "species",
+  "breed",
+  "colour",
+  "dob",
+  "vaccinated",
+  "next_vaccination_date",
+  "image",
+  "vaccinations_tab",
+  "vaccinations_html",
+  "procedures_tab",
+  "procedures_html",
+  "prescriptions_tab",
+  "prescriptions_html",
+  "medical_examination_tab",
+  "medical_exam_html",
+  "admissions_tab",
+  "admissions_html"
+ ],
+ "fields": [
+  {
+   "fieldname": "patient_details_tabs",
+   "fieldtype": "Tab Break",
+   "label": "General Information"
+  },
+  {
+   "fieldname": "patient_name_section",
+   "fieldtype": "Section Break",
+   "label": "Patient Information"
+  },
+  {
+   "fieldname": "patient_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Patient Name",
+   "options": "Patient Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "patient_name.patient_owner",
+   "fieldname": "patient_owner",
+   "fieldtype": "Link",
+   "label": "Patient Owner",
+   "options": "Customer",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "patient_name.sex",
+   "fieldname": "sex",
+   "fieldtype": "Link",
+   "label": "Sex",
+   "options": "Pet Sex",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "patient_name.species",
+   "fieldname": "species",
+   "fieldtype": "Link",
+   "label": "Species",
+   "options": "Species",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "patient_name.breed",
+   "fieldname": "breed",
+   "fieldtype": "Link",
+   "label": "Breed",
+   "options": "Pet Breed",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "patient_name.colour",
+   "fieldname": "colour",
+   "fieldtype": "Link",
+   "label": "Colour",
+   "options": "Pet Colour",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "patient_name.dob",
+   "fieldname": "dob",
+   "fieldtype": "Date",
+   "label": "Date of Birth",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "patient_name.vaccinated",
+   "fieldname": "vaccinated",
+   "fieldtype": "Check",
+   "label": "Vaccinated",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "patient_name.next_vaccination_date",
+   "fieldname": "next_vaccination_date",
+   "fieldtype": "Date",
+   "label": "Next Vaccination Date",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "patient_name.image",
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "label": "Image",
+   "read_only": 1
+  },
+  {
+   "fieldname": "vaccinations_tab",
+   "fieldtype": "Tab Break",
+   "label": "Vaccinations"
+  },
+  {
+   "fieldname": "vaccinations_html",
+   "fieldtype": "HTML",
+   "label": "Vaccinations History",
+   "options": "<div id='vaccinations-table'></div>"
+  },
+  {
+   "fieldname": "procedures_tab",
+   "fieldtype": "Tab Break",
+   "label": "Procedures"
+  },
+  {
+   "fieldname": "procedures_html",
+   "fieldtype": "HTML",
+   "label": "Procedures History",
+   "options": "<div id='procedures-table'></div>"
+  },
+  {
+   "fieldname": "prescriptions_tab",
+   "fieldtype": "Tab Break",
+   "label": "Prescriptions"
+  },
+  {
+   "fieldname": "prescriptions_html",
+   "fieldtype": "HTML",
+   "label": "Prescriptions History",
+   "options": "<div id='prescriptions-table'></div>"
+  },
+  {
+   "fieldname": "medical_examination_tab",
+   "fieldtype": "Tab Break",
+   "label": "Medical Examination"
+  },
+  {
+   "fieldname": "medical_exam_html",
+   "fieldtype": "HTML",
+   "label": "Medical Exam History",
+   "options": "<div id='medical-exam-table'></div>"
+  },
+  {
+   "fieldname": "admissions_tab",
+   "fieldtype": "Tab Break",
+   "label": "Admissions"
+  },
+  {
+   "fieldname": "admissions_html",
+   "fieldtype": "HTML",
+   "label": "Admissions History",
+   "options": "<div id='admissions-table'></div>"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "module": "Veterinary",
+ "name": "Patient Details",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
