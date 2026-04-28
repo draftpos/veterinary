@@ -1,23 +1,22 @@
 {
  "actions": [],
- "allow_import": 0,
- "allow_rename": 0,
  "autoname": "field:patient_name",
- "creation": "2026-10-01",
+ "creation": "2026-10-01 00:00:00",
  "doctype": "DocType",
- "editable_grid": 0,
  "engine": "InnoDB",
  "field_order": [
   "patient_details_tabs",
   "patient_name_section",
   "patient_name",
+  "breed",
   "column_break_basic",
   "patient_owner",
-  "sex",
-  "species",
-  "breed",
-  "colour",
   "dob",
+  "column_break_kzpk",
+  "sex",
+  "colour",
+  "column_break_etxz",
+  "species",
   "vaccinated",
   "next_vaccination_date",
   "image",
@@ -49,7 +48,8 @@
    "in_list_view": 1,
    "label": "Patient Name",
    "options": "Patient Name",
-   "read_only": 1
+   "read_only": 1,
+   "unique": 1
   },
   {
    "fieldname": "column_break_basic",
@@ -103,6 +103,7 @@
    "read_only": 1
   },
   {
+   "default": "0",
    "fetch_from": "patient_name.vaccinated",
    "fieldname": "vaccinated",
    "fieldtype": "Check",
@@ -132,7 +133,7 @@
    "fieldname": "vaccinations_html",
    "fieldtype": "HTML",
    "label": "Vaccinations History",
-   "options": "<div id='vaccinations-table'></div>"
+   "options": "<div id=\"vaccinations-table\"></div>"
   },
   {
    "fieldname": "procedures_tab",
@@ -143,7 +144,7 @@
    "fieldname": "procedures_html",
    "fieldtype": "HTML",
    "label": "Procedures History",
-   "options": "<div id='procedures-table'></div>"
+   "options": "<div id=\"procedures-table\"></div>"
   },
   {
    "fieldname": "prescriptions_tab",
@@ -154,7 +155,7 @@
    "fieldname": "prescriptions_html",
    "fieldtype": "HTML",
    "label": "Prescriptions History",
-   "options": "<div id='prescriptions-table'></div>"
+   "options": "<div id=\"prescriptions-table\"></div>"
   },
   {
    "fieldname": "medical_examination_tab",
@@ -165,7 +166,7 @@
    "fieldname": "medical_exam_html",
    "fieldtype": "HTML",
    "label": "Medical Exam History",
-   "options": "<div id='medical-exam-table'></div>"
+   "options": "<div id=\"medical-exam-table\"></div>"
   },
   {
    "fieldname": "admissions_tab",
@@ -176,11 +177,20 @@
    "fieldname": "admissions_html",
    "fieldtype": "HTML",
    "label": "Admissions History",
-   "options": "<div id='admissions-table'></div>"
+   "options": "<div id=\"admissions-table\"></div>"
+  },
+  {
+   "fieldname": "column_break_kzpk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_etxz",
+   "fieldtype": "Column Break"
   }
  ],
- "index_web_pages_for_search": 0,
  "links": [],
+ "modified": "2026-04-28 12:19:21.295252",
+ "modified_by": "Administrator",
  "module": "Veterinary",
  "name": "Patient Details",
  "owner": "Administrator",
@@ -198,6 +208,7 @@
    "write": 1
   }
  ],
+ "row_format": "Dynamic",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []
