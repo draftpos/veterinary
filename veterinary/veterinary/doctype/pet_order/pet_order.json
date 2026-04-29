@@ -8,7 +8,9 @@
   "section_break_xllp",
   "is_group",
   "is_admited",
+  "quotation",
   "patient_name",
+  "patient_owner",
   "patients",
   "physical_examination_section",
   "hyd",
@@ -44,12 +46,26 @@
    "label": "is admited"
   },
   {
+   "fieldname": "quotation",
+   "fieldtype": "Link",
+   "label": "Quotation",
+   "options": "Quotation"
+  },
+  {
    "depends_on": "eval:doc.is_group == 0",
+   "fetch_from": "quotation.custom_patient_name",
    "fieldname": "patient_name",
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Patient name",
    "options": "Patient Name"
+  },
+  {
+   "fetch_from": "quotation.custom_patient_owner",
+   "fieldname": "patient_owner",
+   "fieldtype": "Link",
+   "label": "Patient owner",
+   "options": "Customer"
   },
   {
    "fieldname": "prescriptions",
@@ -68,9 +84,10 @@
    "fieldname": "hyd",
    "fieldtype": "Select",
    "label": "HYD",
-   "options": "Normal/Abnormal"
+   "options": "Normal\nAbnormal"
   },
   {
+   "fetch_from": "quotation.custom_weight",
    "fieldname": "weight",
    "fieldtype": "Float",
    "in_list_view": 1,
@@ -104,16 +121,19 @@
    "label": "Differential Diagnosis"
   },
   {
+   "fetch_from": "quotation.custom_diagnosis",
    "fieldname": "diagnosis",
    "fieldtype": "Text Editor",
    "label": "Diagnosis"
   },
   {
+   "fetch_from": "quotation.custom_complaint",
    "fieldname": "complaint",
    "fieldtype": "Text Editor",
    "label": "Complaint"
   },
   {
+   "fetch_from": "quotation.custom_advices",
    "fieldname": "advices",
    "fieldtype": "Text Editor",
    "label": "Advices"

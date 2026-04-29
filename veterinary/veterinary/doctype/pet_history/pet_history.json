@@ -58,8 +58,7 @@
    "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
-   "label": "Weight",
-   "length": 1
+   "label": "Weight"
   },
   {
    "fieldname": "column_break_zqyj",
@@ -72,8 +71,7 @@
    "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
-   "label": "HR",
-   "length": 1
+   "label": "HR"
   },
   {
    "fieldname": "column_break_chid",
@@ -86,8 +84,7 @@
    "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
-   "label": "RR",
-   "length": 1
+   "label": "RR"
   },
   {
    "fieldname": "column_break_wcnw",
@@ -95,13 +92,13 @@
   },
   {
    "fieldname": "hyd",
-   "fieldtype": "Float",
+   "fieldtype": "Select",
    "in_filter": 1,
    "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "HYD",
-   "length": 1
+   "options": "Normal\nAbnormal"
   },
   {
    "fieldname": "column_break_mqqu",
@@ -114,8 +111,7 @@
    "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
-   "label": "CRT",
-   "length": 1
+   "label": "CRT"
   },
   {
    "fieldname": "conclusions_section",
