@@ -23,11 +23,13 @@
   {
    "fieldname": "patient_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Patient Name"
   },
   {
    "fieldname": "patient_owner",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Patient Owner",
    "options": "Customer"
   },
@@ -44,18 +46,21 @@
   {
    "fieldname": "sex",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Sex",
    "options": "Pet Sex"
   },
   {
    "fieldname": "species",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Species",
    "options": "Species"
   },
   {
    "fieldname": "breed",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Breed",
    "options": "Pet Breed"
   },

@@ -33,18 +33,21 @@
    "default": "0",
    "fieldname": "is_group",
    "fieldtype": "Check",
+   "in_list_view": 1,
    "label": "Is group"
   },
   {
    "default": "0",
    "fieldname": "is_admited",
    "fieldtype": "Check",
+   "in_list_view": 1,
    "label": "is admited"
   },
   {
    "depends_on": "eval:doc.is_group == 0",
    "fieldname": "patient_name",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Patient name",
    "options": "Patient Name"
   },
@@ -70,6 +73,7 @@
   {
    "fieldname": "weight",
    "fieldtype": "Float",
+   "in_list_view": 1,
    "label": "Weight"
   },
   {
@@ -117,7 +121,7 @@
   {
    "depends_on": "is_group",
    "fieldname": "patients",
-   "fieldtype": "Table",
+   "fieldtype": "Link",
    "label": "Patients",
    "options": "Patient Name"
   },

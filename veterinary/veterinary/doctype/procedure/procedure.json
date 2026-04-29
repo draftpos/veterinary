@@ -1,6 +1,8 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:PROC-.YYYY.-.#####",
+ "naming_rule": "Expression",
  "creation": "2026-04-14 10:43:29.805296",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -11,6 +13,7 @@
   "doctor_name",
   "start_time",
   "end_time",
+  "quotation",
   "medical_examination",
   "drugs"
  ],
@@ -22,30 +25,40 @@
   {
    "fieldname": "patient_name",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "patient name",
    "options": "Patient Name"
   },
   {
    "fieldname": "patient_owner",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "patient owner",
    "options": "Customer"
   },
   {
    "fieldname": "doctor_name",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "doctor name",
    "options": "User"
   },
   {
    "fieldname": "start_time",
    "fieldtype": "Datetime",
+   "in_list_view": 1,
    "label": "start time"
   },
   {
    "fieldname": "end_time",
-   "fieldtype": "Data",
+   "fieldtype": "Datetime",
    "label": "end time"
+  },
+  {
+   "fieldname": "quotation",
+   "fieldtype": "Link",
+   "label": "Quotation",
+   "options": "Quotation"
   },
   {
    "fieldname": "medical_examination",
@@ -62,6 +75,7 @@
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
+ "istable": 0,
  "links": [],
  "modified": "2026-04-14 10:54:30.180035",
  "modified_by": "Administrator",

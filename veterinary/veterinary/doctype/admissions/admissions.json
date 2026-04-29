@@ -1,6 +1,8 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:ADM-.YYYY.-.#####",
+ "naming_rule": "Expression",
  "creation": "2026-04-14 10:40:51.532867",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -10,7 +12,8 @@
   "bed_no",
   "doctorname",
   "checkin_time",
-  "checkout_time"
+  "checkout_time",
+  "quotation"
  ],
  "fields": [
   {
@@ -20,41 +23,64 @@
   {
    "fieldname": "patient_name",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "patient name",
    "options": "Patient Name"
   },
   {
    "fieldname": "bed_no",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "bed no"
   },
   {
    "fieldname": "doctorname",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "doctorname",
    "options": "User"
   },
   {
    "fieldname": "checkin_time",
    "fieldtype": "Datetime",
+   "in_list_view": 1,
    "label": "checkin time"
   },
   {
    "fieldname": "checkout_time",
    "fieldtype": "Datetime",
    "label": "checkout time"
+  },
+  {
+   "fieldname": "quotation",
+   "fieldtype": "Link",
+   "label": "Quotation",
+   "options": "Quotation"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
- "istable": 1,
+ "istable": 0,
  "links": [],
  "modified": "2026-04-16 10:58:50.743080",
  "modified_by": "Administrator",
  "module": "Veterinary",
  "name": "Admissions",
  "owner": "Administrator",
- "permissions": [],
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",

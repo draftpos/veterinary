@@ -196,7 +196,7 @@ after_install = "veterinary.www.install_defaults.install_all"
 
 # Request Events
 # ----------------
-# before_request = ["veterinary.utils.before_request"]
+# before_request = ["veterinary.veterinary.utils.before_request"]
 # after_request = ["veterinary.utils.after_request"]
 
 # Job Events

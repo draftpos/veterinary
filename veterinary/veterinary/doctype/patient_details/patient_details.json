@@ -59,6 +59,7 @@
    "fetch_from": "patient_name.patient_owner",
    "fieldname": "patient_owner",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Patient Owner",
    "options": "Customer",
    "read_only": 1
@@ -75,6 +76,7 @@
    "fetch_from": "patient_name.species",
    "fieldname": "species",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Species",
    "options": "Species",
    "read_only": 1
@@ -83,6 +85,7 @@
    "fetch_from": "patient_name.breed",
    "fieldname": "breed",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Breed",
    "options": "Pet Breed",
    "read_only": 1
