@@ -56,16 +56,11 @@ function _load_histories(frm) {
 
 			// ── Prescriptions ─────────────────────────────────────────
 			_render_table('prescriptions-table', d.prescriptions_history, [
-				{ key: 'name',      label: 'Record ID', is_link: true, doctype: 'Pet Order' },
-				{ key: 'complaint', label: 'Complaint' },
-				{ key: 'diagnosis', label: 'Diagnosis' },
-				{ key: 'advices',   label: 'Advices' },
-				{ key: 'hyd',       label: 'HYD' },
-				{ key: 'crt',       label: 'CRT' },
-				{ key: 'weight',    label: 'Weight (kg)' },
-				{ key: 'rr',        label: 'RR' },
-				{ key: 'hr',        label: 'HR' },
-				{ key: 'modified',  label: 'Date' }
+				{ key: 'order_id', label: 'Order ID', is_link: true, doctype: 'Pet Order' },
+				{ key: 'item_name', label: 'Medication' },
+				{ key: 'quantity', label: 'Qty' },
+				{ key: 'dosage',   label: 'Dosage' },
+				{ key: 'date',     label: 'Date' }
 			]);
 
 			// ── Medical Examination ───────────────────────────────────
@@ -85,6 +80,7 @@ function _load_histories(frm) {
 			// ── Admissions ────────────────────────────────────────────
 			_render_table('admissions-table', d.admissions_history, [
 				{ key: 'name',          label: 'Record ID', is_link: true, doctype: 'Admissions' },
+				{ key: 'quotation',     label: 'Quotation', is_link: true, doctype: 'Quotation' },
 				{ key: 'bed_no',        label: 'Bed No' },
 				{ key: 'doctorname',    label: 'Doctor' },
 				{ key: 'checkin_time',  label: 'Check In' },

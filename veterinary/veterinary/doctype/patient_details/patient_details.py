@@ -36,24 +36,14 @@ def get_patient_history(patient_name):
             ['name', 'doctor_name', 'start_time', 'end_time', 'patient_owner'],
             'start_time desc'
         ),
-        'prescriptions_history': _safe_get_all(
-            'Pet Order',
-            {'patient_name': patient_name},
-            ['name', 'complaint', 'diagnosis', 'advices', 'hyd', 'crt', 'weight', 'rr', 'hr', 'modified'],
-            'modified desc'
-        ),
+        'prescriptions_history': _get_prescription_details(patient_name),
         'medical_exam_history': _safe_get_all(
             'Pet Order',
             {'patient_name': patient_name},
             ['name', 'complaint', 'diagnosis', 'advices', 'hyd', 'crt', 'weight', 'rr', 'hr', 'modified'],
             'modified desc'
         ),
-        'admissions_history': _safe_get_all(
-            'Admissions',
-            {'patient_name': patient_name},
-            ['name', 'bed_no', 'doctorname', 'checkin_time', 'checkout_time'],
-            'checkin_time desc'
-        ),
+        'admissions_history': _get_admissions_history(patient_name),
     }
 
 
@@ -187,5 +177,59 @@ def _get_vaccination_details(patient_name):
         frappe.log_error(
             frappe.get_traceback(),
             'PatientDetails: failed to load vaccination details'
+        )
+        return []
+
+
+def _get_prescription_details(patient_name):
+    """
+    Fetch all prescription items for a patient by joining
+    Prescription Item (child) with Pet Order (parent).
+    """
+    try:
+        return frappe.db.sql("""
+            SELECT
+                pi.item_name,
+                pi.quantity,
+                pi.dosage,
+                po.modified as date,
+                po.name as order_id
+            FROM `tabPrescription Item` pi
+            JOIN `tabPet Order` po ON po.name = pi.parent
+            WHERE po.patient_name = %s
+            ORDER BY po.modified DESC
+            LIMIT 200
+        """, patient_name, as_dict=True)
+    except Exception:
+        frappe.log_error(
+            frappe.get_traceback(),
+            'PatientDetails: failed to load prescription details'
+        )
+        return []
+
+
+def _get_admissions_history(patient_name):
+    """
+    Fetch all admissions for a patient.
+    Uses raw SQL to handle NULL checkin_time for manually created records.
+    """
+    try:
+        return frappe.db.sql("""
+            SELECT
+                name,
+                IFNULL(bed_no, '') as bed_no,
+                IFNULL(doctorname, '') as doctorname,
+                IFNULL(checkin_time, modified) as checkin_time,
+                IFNULL(checkout_time, '') as checkout_time,
+                IFNULL(quotation, '') as quotation
+            FROM `tabAdmissions`
+            WHERE patient_name = %s
+            ORDER BY IFNULL(checkin_time, modified) DESC
+            LIMIT 100
+        """, patient_name, as_dict=True)
+    except Exception:
+        frappe.log_error(
+            frappe.get_traceback(),
+            'PatientDetails: failed to load admissions'
         )
         return []
