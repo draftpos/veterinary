@@ -182,7 +182,7 @@ after_install = "veterinary.www.install_defaults.install_all"
 # generated from the base implementation of the doctype dashboard,
 # along with any modifications made in other Frappe apps
 # override_doctype_dashboards = {
-# 	"Task": "veterinary.task.get_dashboard_data"
+# 	"Quotation": "veterinary.veterinary.veterinary.dashboard_overrides.get_quotation_dashboard_data"
 # }
 
 # exempt linked doctypes from being automatically cancelled

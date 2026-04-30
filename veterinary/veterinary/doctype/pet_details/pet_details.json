@@ -43,7 +43,7 @@
   "advices",
   "is_admited"
  ],
-  "fields": [
+ "fields": [
   {
    "fieldname": "tab_break_general",
    "fieldtype": "Tab Break",
@@ -283,9 +283,8 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
-
  "links": [],
- "modified": "2026-04-16 07:58:10.068805",
+ "modified": "2025-12-10 11:16:51.517265",
  "modified_by": "Administrator",
  "module": "Veterinary",
  "name": "Pet Details",

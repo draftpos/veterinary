@@ -7,7 +7,9 @@
  "field_order": [
   "section_break_6zpy",
   "drug_item",
-  "quantity"
+  "quantity",
+  "dosage",
+  "instructions"
  ],
  "fields": [
   {
@@ -24,13 +26,23 @@
    "fieldname": "quantity",
    "fieldtype": "Float",
    "label": "quantity"
+  },
+  {
+   "fieldname": "dosage",
+   "fieldtype": "Small Text",
+   "label": "Dosage"
+  },
+  {
+   "fieldname": "instructions",
+   "fieldtype": "Small Text",
+   "label": "Instructions"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-04-14 10:47:56.749106",
+ "modified": "2026-04-30 09:32:00.000000",
  "modified_by": "Administrator",
  "module": "Veterinary",
  "name": "Drug Detail",

@@ -54,6 +54,7 @@
   {
    "depends_on": "eval:doc.is_group == 0",
    "fetch_from": "quotation.custom_patient_name",
+   "fetch_if_empty": 1,
    "fieldname": "patient_name",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -62,6 +63,7 @@
   },
   {
    "fetch_from": "quotation.custom_patient_owner",
+   "fetch_if_empty": 1,
    "fieldname": "patient_owner",
    "fieldtype": "Link",
    "label": "Patient owner",
@@ -174,7 +176,10 @@
  ],
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
+ "search_fields": "patient_name",
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "patient_name"
 }

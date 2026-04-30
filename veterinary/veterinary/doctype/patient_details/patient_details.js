@@ -49,9 +49,11 @@ function _load_histories(frm) {
 			_render_table('procedures-table', d.procedures_history, [
 				{ key: 'name',          label: 'Record ID', is_link: true, doctype: 'Procedure' },
 				{ key: 'doctor_name',   label: 'Doctor' },
-				{ key: 'patient_owner', label: 'Patient Owner' },
-				{ key: 'start_time',    label: 'Start Time' },
-				{ key: 'end_time',      label: 'End Time' }
+				{ key: 'drug_item',     label: 'Drug' },
+				{ key: 'quantity',      label: 'Qty' },
+				{ key: 'dosage',        label: 'Dosage' },
+				{ key: 'instructions',  label: 'Instructions' },
+				{ key: 'start_time',    label: 'Start Time' }
 			]);
 
 			// ── Prescriptions ─────────────────────────────────────────

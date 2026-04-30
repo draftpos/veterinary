@@ -30,12 +30,7 @@ def get_patient_history(patient_name):
 
     return {
         'vaccinations_history': _get_vaccination_details(patient_name),
-        'procedures_history': _safe_get_all(
-            'Procedure',
-            {'patient_name': patient_name},
-            ['name', 'doctor_name', 'start_time', 'end_time', 'patient_owner'],
-            'start_time desc'
-        ),
+        'procedures_history': _get_procedure_history(patient_name),
         'prescriptions_history': _get_prescription_details(patient_name),
         'medical_exam_history': _safe_get_all(
             'Pet Order',
@@ -177,6 +172,36 @@ def _get_vaccination_details(patient_name):
         frappe.log_error(
             frappe.get_traceback(),
             'PatientDetails: failed to load vaccination details'
+        )
+        return []
+
+
+def _get_procedure_history(patient_name):
+    """
+    Fetch all drugs entered in standalone Procedures by joining
+    Drug Detail (child) with Procedure (parent).
+    """
+    try:
+        return frappe.db.sql("""
+            SELECT
+                p.name,
+                p.doctor_name,
+                p.start_time,
+                p.end_time,
+                dd.drug_item,
+                dd.quantity,
+                dd.dosage,
+                dd.instructions
+            FROM `tabDrug Detail` dd
+            JOIN `tabProcedure` p ON p.name = dd.parent
+            WHERE p.patient_name = %s
+            ORDER BY p.start_time DESC
+            LIMIT 200
+        """, patient_name, as_dict=True)
+    except Exception:
+        frappe.log_error(
+            frappe.get_traceback(),
+            'PatientDetails: failed to load procedure history'
         )
         return []
 

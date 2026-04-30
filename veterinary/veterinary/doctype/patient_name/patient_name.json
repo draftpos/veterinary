@@ -17,7 +17,10 @@
   "breed",
   "vaccinated",
   "next_vaccination_date",
-  "alive"
+  "alive",
+  "section_break_proc",
+  "tab_break_procedures",
+  "procedure_drugs"
  ],
  "fields": [
   {
@@ -95,12 +98,28 @@
    "fieldname": "image_preview",
    "fieldtype": "HTML",
    "label": "image_preview"
+  },
+  {
+   "fieldname": "section_break_proc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "tab_break_procedures",
+   "fieldtype": "Tab Break",
+   "label": "Procedures"
+  },
+  {
+   "fieldname": "procedure_drugs",
+   "fieldtype": "Table",
+   "label": "Procedure Drug History",
+   "options": "Drug Detail",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-16 07:48:58.835345",
+ "modified": "2026-04-30 09:41:00.000000",
  "modified_by": "Administrator",
  "module": "Veterinary",
  "name": "Patient Name",
