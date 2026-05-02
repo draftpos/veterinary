@@ -6,8 +6,12 @@
  "engine": "InnoDB",
  "field_order": [
   "patient_details_tabs",
+  "general_info_html",
   "patient_name_section",
+  "image",
   "patient_name",
+  "patient_display_name",
+  "search_reference",
   "breed",
   "column_break_basic",
   "patient_owner",
@@ -19,7 +23,6 @@
   "species",
   "vaccinated",
   "next_vaccination_date",
-  "image",
   "vaccinations_tab",
   "vaccinations_html",
   "procedures_tab",
@@ -29,13 +32,22 @@
   "medical_examination_tab",
   "medical_exam_html",
   "admissions_tab",
-  "admissions_html"
+  "admissions_html",
+  "reminder_settings_tab",
+  "reminder_settings_html",
+  "inventory_tab",
+  "inventory_html"
  ],
  "fields": [
   {
    "fieldname": "patient_details_tabs",
    "fieldtype": "Tab Break",
    "label": "General Information"
+  },
+  {
+   "fieldname": "general_info_html",
+   "fieldtype": "HTML",
+   "label": "Actions"
   },
   {
    "fieldname": "patient_name_section",
@@ -45,11 +57,25 @@
   {
    "fieldname": "patient_name",
    "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Patient Name",
+   "label": "Patient ID",
    "options": "Patient Name",
    "read_only": 1,
    "unique": 1
+  },
+  {
+   "fetch_from": "patient_name.patient_name",
+   "fieldname": "patient_display_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Patient Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "search_reference",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Search Reference",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_basic",
@@ -189,10 +215,33 @@
   {
    "fieldname": "column_break_etxz",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reminder_settings_tab",
+   "fieldtype": "Tab Break",
+   "label": "Reminder Settings"
+  },
+  {
+   "fieldname": "reminder_settings_html",
+   "fieldtype": "HTML",
+   "label": "Reminder Settings Dashboard",
+   "options": "<div id=\"reminder-settings-dashboard\"></div>"
+  },
+  {
+   "fieldname": "inventory_tab",
+   "fieldtype": "Tab Break",
+   "label": "Inventory Control"
+  },
+  {
+   "fieldname": "inventory_html",
+   "fieldtype": "HTML",
+   "label": "Veterinary Stock",
+   "options": "<div id=\"veterinary-stock-table\"></div>"
   }
  ],
+ "image_field": "image",
  "links": [],
- "modified": "2026-04-28 12:19:21.295252",
+ "modified": "2026-04-30 16:56:00.000000",
  "modified_by": "Administrator",
  "module": "Veterinary",
  "name": "Patient Details",
@@ -212,7 +261,10 @@
   }
  ],
  "row_format": "Dynamic",
+ "search_fields": "search_reference, patient_display_name, patient_owner",
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "search_reference"
 }

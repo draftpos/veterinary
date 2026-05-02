@@ -18,6 +18,7 @@
   "vaccinated",
   "next_vaccination_date",
   "alive",
+  "stop_vaccination_reminders",
   "section_break_proc",
   "tab_break_procedures",
   "procedure_drugs"
@@ -93,6 +94,12 @@
    "fieldname": "next_vaccination_date",
    "fieldtype": "Date",
    "label": "Next Vaccination Date"
+  },
+  {
+   "default": "0",
+   "fieldname": "stop_vaccination_reminders",
+   "fieldtype": "Check",
+   "label": "Stop Vaccination Reminders"
   },
   {
    "fieldname": "image_preview",

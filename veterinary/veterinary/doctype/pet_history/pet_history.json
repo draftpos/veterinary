@@ -1,11 +1,26 @@
 {
  "actions": [],
+ "allow_rename": 1,
  "autoname": "autoincrement",
  "creation": "2025-12-15 16:36:58.023480",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "tab_general",
+  "back_to_details_html",
+  "tab_visit_details",
   "pet_details_section",
+  "patient_name",
+  "patient_display_name",
+  "patient_owner",
+  "sex",
+  "species",
+  "breed",
+  "colour",
+  "dob",
+  "vaccinated",
+  "next_vaccination_date",
+  "image",
   "column_break_lmxd",
   "visit_date",
   "metrics_section",
@@ -29,13 +44,19 @@
  ],
  "fields": [
   {
-   "fieldname": "visit_date",
-   "fieldtype": "Date",
-   "in_filter": 1,
-   "in_list_view": 1,
-   "in_preview": 1,
-   "in_standard_filter": 1,
-   "label": "Visit Date"
+   "fieldname": "tab_general",
+   "fieldtype": "Tab Break",
+   "label": "General Information"
+  },
+  {
+   "fieldname": "back_to_details_html",
+   "fieldtype": "HTML",
+   "label": "Back Button"
+  },
+  {
+   "fieldname": "tab_visit_details",
+   "fieldtype": "Tab Break",
+   "label": "Visit Details"
   },
   {
    "fieldname": "pet_details_section",
@@ -43,8 +64,100 @@
    "label": "Pet Details"
   },
   {
+   "fieldname": "patient_name",
+   "fieldtype": "Link",
+   "label": "Patient ID",
+   "options": "Patient Name"
+  },
+  {
+   "fetch_from": "patient_name.patient_name",
+   "fieldname": "patient_display_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Patient Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "patient_name.patient_owner",
+   "fieldname": "patient_owner",
+   "fieldtype": "Link",
+   "label": "Patient Owner",
+   "options": "Customer",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "patient_name.sex",
+   "fieldname": "sex",
+   "fieldtype": "Link",
+   "label": "Sex",
+   "options": "Pet Sex",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "patient_name.species",
+   "fieldname": "species",
+   "fieldtype": "Link",
+   "label": "Species",
+   "options": "Species",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "patient_name.breed",
+   "fieldname": "breed",
+   "fieldtype": "Link",
+   "label": "Breed",
+   "options": "Pet Breed",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "patient_name.colour",
+   "fieldname": "colour",
+   "fieldtype": "Link",
+   "label": "Colour",
+   "options": "Pet Colour",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "patient_name.dob",
+   "fieldname": "dob",
+   "fieldtype": "Date",
+   "label": "Date of Birth",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fetch_from": "patient_name.vaccinated",
+   "fieldname": "vaccinated",
+   "fieldtype": "Check",
+   "label": "Vaccinated",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "patient_name.next_vaccination_date",
+   "fieldname": "next_vaccination_date",
+   "fieldtype": "Date",
+   "label": "Next Vaccination Date",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "patient_name.image",
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "label": "Image",
+   "read_only": 1
+  },
+  {
    "fieldname": "column_break_lmxd",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "visit_date",
+   "fieldtype": "Date",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Visit Date"
   },
   {
    "fieldname": "metrics_section",
@@ -126,6 +239,7 @@
   {
    "fieldname": "diagnosis",
    "fieldtype": "Small Text",
+   "in_list_view": 1,
    "label": "Diagnosis"
   },
   {
@@ -136,6 +250,7 @@
   {
    "fieldname": "advices",
    "fieldtype": "Small Text",
+   "in_list_view": 1,
    "label": "Advices"
   },
   {
@@ -155,16 +270,31 @@
  "index_web_pages_for_search": 1,
  "istable": 0,
  "links": [],
- "modified": "2025-12-19 09:23:35.920200",
+ "modified": "2026-04-30 14:45:00.000000",
  "modified_by": "Administrator",
  "module": "Veterinary",
  "name": "Pet History",
- "naming_rule": "Autoincrement",
  "owner": "Administrator",
- "permissions": [],
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
- "sort_field": "modified",
+ "search_fields": "patient_display_name, visit_date, diagnosis",
+ "show_title_field_in_link": 1,
+ "sort_field": "visit_date",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "patient_display_name"
 }

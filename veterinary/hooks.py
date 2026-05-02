@@ -148,23 +148,11 @@ after_install = "veterinary.www.install_defaults.install_all"
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"veterinary.tasks.all"
-# 	],
-# 	"daily": [
-# 		"veterinary.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"veterinary.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"veterinary.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"veterinary.tasks.monthly"
-# 	],
-# }
+scheduler_events = {
+	"daily": [
+		"veterinary.veterinary.doctype.patient_details.patient_details.send_vaccination_reminders"
+	],
+}
 
 # Testing
 # -------
@@ -247,7 +235,7 @@ fixtures = [
     {
         "dt": "Custom Field",
         "filters": [
-            ["dt", "in", ["Quotation", "Quotation Item"]]
+            ["dt", "in", ["Quotation", "Quotation Item", "Item"]]
         ]
     },
     {

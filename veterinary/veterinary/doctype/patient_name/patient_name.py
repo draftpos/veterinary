@@ -44,6 +44,9 @@ class PatientName(Document):
         details.next_vaccination_date = self.next_vaccination_date
         details.image = self.image
 
+        # Update search reference
+        details.search_reference = f"{self.patient_name} - {self.patient_owner}" if self.patient_owner else self.patient_name
+
         details.flags.ignore_permissions = True
         details.flags.ignore_mandatory = True
         details.flags.ignore_links = True
