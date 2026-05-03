@@ -7,6 +7,7 @@
  "field_order": [
   "section_break_pgjc",
   "patient_name",
+  "quotation",
   "vaccination_details"
  ],
  "fields": [
@@ -19,6 +20,12 @@
    "fieldtype": "Link",
    "label": "patient name",
    "options": "Patient Name"
+  },
+  {
+   "fieldname": "quotation",
+   "fieldtype": "Link",
+   "label": "Quotation",
+   "options": "Quotation"
   },
   {
    "fieldname": "vaccination_details",

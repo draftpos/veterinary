@@ -3703,5 +3703,95 @@
   "translatable": 0,
   "unique": 0,
   "width": null
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "Quotation-custom_procedures_tab",
+  "dt": "Quotation",
+  "fieldname": "custom_procedures_tab",
+  "fieldtype": "Tab Break",
+  "label": "Procedures",
+  "insert_after": "custom_differential_diagnosis",
+  "show_dashboard": 1
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "Quotation-custom_vaccinations_tab",
+  "dt": "Quotation",
+  "fieldname": "custom_vaccinations_tab",
+  "fieldtype": "Tab Break",
+  "label": "Vaccinations",
+  "insert_after": "custom_procedures_tab",
+  "show_dashboard": 1
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "Procedure-custom_payment_status",
+  "dt": "Procedure",
+  "fieldname": "custom_payment_status",
+  "fieldtype": "Select",
+  "label": "Payment Status",
+  "options": "Pending\nPartly Paid\nFully Paid",
+  "default": "Pending",
+  "read_only": 1,
+  "in_list_view": 1,
+  "insert_after": "quotation"
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "Vaccinations-custom_payment_status",
+  "dt": "Vaccinations",
+  "fieldname": "custom_payment_status",
+  "fieldtype": "Select",
+  "label": "Payment Status",
+  "options": "Pending\nPartly Paid\nFully Paid",
+  "default": "Pending",
+  "read_only": 1,
+  "in_list_view": 1,
+  "insert_after": "quotation"
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "Quotation-custom_procedure_payment_status",
+  "dt": "Quotation",
+  "fieldname": "custom_procedure_payment_status",
+  "fieldtype": "Select",
+  "label": "Procedure Payment Status",
+  "options": "Pending\nPartly Paid\nFully Paid",
+  "default": "Pending",
+  "read_only": 1,
+  "in_list_view": 0,
+  "insert_after": "custom_procedures_tab"
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "Quotation-custom_procedures_html",
+  "dt": "Quotation",
+  "fieldname": "custom_procedures_html",
+  "fieldtype": "HTML",
+  "label": "Procedures List",
+  "insert_after": "custom_procedure_payment_status"
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "Quotation-custom_vaccination_payment_status",
+  "dt": "Quotation",
+  "fieldname": "custom_vaccination_payment_status",
+  "fieldtype": "Select",
+  "label": "Vaccination Payment Status",
+  "options": "Pending\nPartly Paid\nFully Paid",
+  "default": "Pending",
+  "read_only": 1,
+  "in_list_view": 0,
+  "insert_after": "custom_vaccinations_tab"
+ },
+ {
+  "doctype": "Custom Field",
+  "name": "Quotation-custom_vaccinations_html",
+  "dt": "Quotation",
+  "fieldname": "custom_vaccinations_html",
+  "fieldtype": "HTML",
+  "label": "Vaccinations List",
+  "insert_after": "custom_vaccination_payment_status"
  }
 ]

@@ -9,9 +9,10 @@ def before_save(doc, method):
     # Auto-fix schema once if needed
     fix_database_schema()
 
-    if doc.custom_pet_details:
-        for row in doc.custom_pet_details:
-            row.follow_up_date = doc.custom_follow_up_date
+    pet_details = getattr(doc, "custom_pet_details", None)
+    if pet_details:
+        for row in pet_details:
+            row.follow_up_date = getattr(doc, "custom_follow_up_date", None)
 
     sync_veterinary_records(doc, method)
 
@@ -20,13 +21,17 @@ def sync_veterinary_records(doc, method):
     """
     Sync logic to propagate data from Quotation to Pet Order, Pet History, and Admissions.
     """
-    if not doc.custom_patient_name and not (doc.custom_is_group and doc.custom_pet_details):
+    custom_patient_name = getattr(doc, "custom_patient_name", None)
+    custom_is_group = getattr(doc, "custom_is_group", None)
+    custom_pet_details = getattr(doc, "custom_pet_details", None)
+
+    if not custom_patient_name and not (custom_is_group and custom_pet_details):
         return
 
     # Collect pets to process
     pets_to_sync = []
-    if doc.custom_is_group and doc.custom_pet_details:
-        for row in doc.custom_pet_details:
+    if custom_is_group and custom_pet_details:
+        for row in custom_pet_details:
             pets_to_sync.append({
                 "patient_name": row.patient_name,
                 "patient_owner": row.patient_owner,
@@ -46,19 +51,19 @@ def sync_veterinary_records(doc, method):
     else:
         pets_to_sync.append({
             "patient_name": doc.custom_patient_name,
-            "patient_owner": doc.custom_patient_owner,
-            "diagnosis": doc.custom_diagnosis,
-            "complaint": doc.custom_complaint,
-            "advices": doc.custom_advices,
-            "hyd": doc.custom_hyd,
-            "crt": doc.custom_crt,
-            "weight": doc.custom_weight,
-            "rr": doc.custom_rr,
-            "hr": doc.custom_hr,
-            "differential_diagnosis": doc.custom_differential_diagnosis,
-            "is_admited": doc.custom_is_admited,
-            "vaccinations": doc.custom_vaccinations,
-            "prescriptions": doc.custom_prescriptions
+            "patient_owner": getattr(doc, "custom_patient_owner", None),
+            "diagnosis": getattr(doc, "custom_diagnosis", None),
+            "complaint": getattr(doc, "custom_complaint", None),
+            "advices": getattr(doc, "custom_advices", None),
+            "hyd": getattr(doc, "custom_hyd", None),
+            "crt": getattr(doc, "custom_crt", None),
+            "weight": getattr(doc, "custom_weight", None),
+            "rr": getattr(doc, "custom_rr", None),
+            "hr": getattr(doc, "custom_hr", None),
+            "differential_diagnosis": getattr(doc, "custom_differential_diagnosis", None),
+            "is_admited": getattr(doc, "custom_is_admited", None),
+            "vaccinations": getattr(doc, "custom_vaccinations", None),
+            "prescriptions": getattr(doc, "custom_prescriptions", None)
         })
 
     for pet in pets_to_sync:

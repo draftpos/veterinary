@@ -19,13 +19,21 @@ frappe.ui.form.on('Pet History', {
 			$('<button class="btn btn-primary" style="margin: 20px;">')
 				.html('<i class="fa fa-arrow-left"></i> ' + __('Back to Patient Details Dashboard'))
 				.on('click', () => {
-					frappe.set_route('Form', 'Patient Details', frm.doc.patient_name);
+					frappe.db.get_value('Patient Details', {patient_name: frm.doc.patient_name}, 'name', (r) => {
+						if (r && r.name) {
+							frappe.set_route('Form', 'Patient Details', r.name);
+						}
+					});
 				})
 				.appendTo(back_btn_wrapper);
 
 			// Also add a custom button in the header for convenience
 			frm.add_custom_button(__('Patient Dashboard'), () => {
-				frappe.set_route('Form', 'Patient Details', frm.doc.patient_name);
+				frappe.db.get_value('Patient Details', {patient_name: frm.doc.patient_name}, 'name', (r) => {
+					if (r && r.name) {
+						frappe.set_route('Form', 'Patient Details', r.name);
+					}
+				});
 			}, __('Actions'));
 		}
 	}

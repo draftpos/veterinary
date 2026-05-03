@@ -12,7 +12,20 @@ frappe.ui.form.on('Patient Details', {
 	},
 
 	refresh(frm) {
+		// Silently trigger URL migration in background
+		if (!frm.is_new() && frm.doc.name === frm.doc.patient_name) {
+			frappe.call({
+				method: 'veterinary.veterinary.doctype.patient_details.patient_details.migrate_patient_details_urls',
+				callback: function(r) {
+					if(r.message) {
+						frappe.msgprint("Migration renamed " + r.message + " records. The URL should update shortly. Please go back to the Patient Details list and re-open this patient!");
+					}
+				}
+			});
+		}
+
 		if (frm.is_new() && frm.doc.patient_name === 'Bruno') {
+
 			frm.set_value('patient_name', '');
 		}
 		frm.disable_save();
@@ -25,18 +38,6 @@ function _fix_patient_name_visibility(frm) {
 	// Frappe hides the autoname field by default — force it visible
 	frm.set_df_property('patient_name', 'hidden', 0);
 	frm.set_df_property('patient_name', 'read_only', frm.is_new() ? 0 : 1);
-
-	if (frm.doc.patient_name) {
-		frm.set_df_property('patient_name', 'description', `
-			<div style="margin-top:8px;">
-				<button class="btn btn-xs btn-primary" 
-					onclick="frappe.set_route('List', 'Pet History', {patient_name: '${frm.doc.patient_name}'});"
-					style="font-weight:bold; box-shadow: var(--shadow-sm);">
-					<i class="fa fa-history"></i> View Full Pet History List
-				</button>
-			</div>
-		`);
-	}
 
 	frm.refresh_field('patient_name');
 }
@@ -59,29 +60,6 @@ function _load_histories(frm) {
 				if (general_info.length && !general_info.find('.btn-group-general').length) {
 					const btn_group = $('<div class="btn-group-general" style="margin-bottom:15px; display:flex; flex-wrap:wrap; gap:10px; padding:10px; border:1px solid var(--border-color); background:var(--gray-50); border-radius:4px;">')
 						.prependTo(general_info);
-
-					$('<button class="btn btn-xs btn-primary btn-new-history">')
-						.html('<i class="fa fa-plus"></i> ' + __('New Medical Visit'))
-						.on('click', () => {
-							frappe.new_doc('Pet History', {
-								patient_name: frm.doc.patient_name
-							});
-						})
-						.appendTo(btn_group);
-
-					$('<button class="btn btn-xs btn-success btn-create-patient">')
-						.html('<i class="fa fa-plus"></i> ' + __('Create New Patient'))
-						.on('click', () => {
-							frappe.new_doc('Patient Name');
-						})
-						.appendTo(btn_group);
-
-					$('<button class="btn btn-xs btn-default btn-view-history">')
-						.html('<i class="fa fa-history"></i> ' + __('Scroll to History'))
-						.on('click', () => {
-							frm.scroll_to_field('medical_history_tab');
-						})
-						.appendTo(btn_group);
 
 					$('<button class="btn btn-xs btn-info btn-goto-history">')
 						.html('<i class="fa fa-list"></i> ' + __('Pet History List'))
@@ -223,29 +201,6 @@ function _load_histories(frm) {
 						.prependTo(medical_exam_section);
 				}
 			} catch (e) { console.error("Error adding medical exam button", e); }
-
-			// ── Medical History ──────────────────────────────────────
-			try {
-				const medical_history_section = $(frm.fields_dict['medical_history_html'].wrapper);
-				if (medical_history_section.length && !medical_history_section.find('.btn-add-general-history').length) {
-					$('<button class="btn btn-xs btn-primary btn-add-general-history" style="margin-top:10px; margin-bottom:10px;">')
-						.html('<i class="fa fa-plus"></i> ' + __('Record New Visit'))
-						.on('click', () => {
-							frappe.new_doc('Pet History', {
-								patient_name: frm.doc.patient_name
-							});
-						})
-						.prependTo(medical_history_section);
-				}
-			} catch (e) { console.error("Error adding medical history button", e); }
-			_render_table('history-table', d.pet_history, [
-				{ key: 'name',       label: 'History No', is_link: true, doctype: 'Pet History' },
-				{ key: 'visit_date', label: 'Date', width: '120px' },
-				{ key: 'diagnosis',  label: 'Diagnosis', width: '30%' },
-				{ key: 'advices',    label: 'Advice/Treatment', width: '30%' },
-				{ key: 'weight',     label: 'Wt (kg)' },
-				{ key: 'complaint',  label: 'Complaint' }
-			]);
 
 			// ── Vaccinations ──────────────────────────────────────────
 			_render_table('vaccinations-table', d.vaccinations_history, [

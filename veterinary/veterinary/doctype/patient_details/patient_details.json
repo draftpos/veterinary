@@ -1,6 +1,6 @@
 {
  "actions": [],
- "autoname": "field:patient_name",
+ "autoname": "format:{patient_display_name}-{patient_name}",
  "creation": "2026-10-01 00:00:00",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -266,5 +266,5 @@
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
- "title_field": "search_reference"
+ "title_field": "patient_display_name"
 }
