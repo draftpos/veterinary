@@ -107,8 +107,12 @@ class Vaccinations(Document):
         quotation.flags.ignore_permissions = True
         if self.quotation:
             quotation.save(ignore_permissions=True)
-            frappe.msgprint(f"Quotation <a href='/app/quotation/{quotation.name}'>{quotation.name}</a> updated with vaccination details.")
+            if quotation.docstatus == 0:
+                quotation.submit()
+            frappe.msgprint(f"Quotation <a href='/app/quotation/{quotation.name}'>{quotation.name}</a> updated and submitted with vaccination details.")
         else:
             quotation.insert(ignore_permissions=True)
+            quotation.submit()
             self.db_set("quotation", quotation.name)
-            frappe.msgprint(f"Quotation <a href='/app/quotation/{quotation.name}'>{quotation.name}</a> automatically created for Vaccinations.")
+            frappe.db.commit()
+            frappe.msgprint(f"Quotation <a href='/app/quotation/{quotation.name}'>{quotation.name}</a> automatically created and submitted for Vaccinations.")

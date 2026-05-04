@@ -55,19 +55,26 @@ class Procedure(Document):
 			quotation.custom_inline_patient_name = self.patient_name
 			quotation.custom_inline_patient_owner = patient_owner
 			
+			# Fetch medical exam details if linked
+			medical_exam_data = {}
+			if self.medical_examination:
+				medical_exam_data = frappe.db.get_value("Pet Order", self.medical_examination, 
+					["weight", "hyd", "crt", "rr", "hr", "diagnosis", "complaint", "advices", "differential_diagnosis"], 
+					as_dict=True) or {}
+
 			# Fill child table for the Group view
 			quotation.append("custom_pet_details", {
 				"patient_name": self.patient_name,
 				"patient_owner": patient_owner,
-				"weight": self.weight,
-				"hyd": self.hyd,
-				"crt": self.crt,
-				"rr": self.rr,
-				"hr": self.hr,
-				"diagnosis": self.diagnosis,
-				"complaint": self.complaint,
-				"advices": self.advices,
-				"differential_diagnosis": self.differential_diagnosis
+				"weight": medical_exam_data.get("weight"),
+				"hyd": medical_exam_data.get("hyd"),
+				"crt": medical_exam_data.get("crt"),
+				"rr": medical_exam_data.get("rr"),
+				"hr": medical_exam_data.get("hr"),
+				"diagnosis": medical_exam_data.get("diagnosis"),
+				"complaint": medical_exam_data.get("complaint"),
+				"advices": medical_exam_data.get("advices"),
+				"differential_diagnosis": medical_exam_data.get("differential_diagnosis")
 			})
 
 			quotation.order_type = "Sales"
@@ -116,8 +123,12 @@ class Procedure(Document):
 		quotation.flags.ignore_permissions = True
 		if self.quotation:
 			quotation.save(ignore_permissions=True)
-			frappe.msgprint(f"Quotation <a href='/app/quotation/{quotation.name}'>{quotation.name}</a> updated with procedure details.")
+			if quotation.docstatus == 0:
+				quotation.submit()
+			frappe.msgprint(f"Quotation <a href='/app/quotation/{quotation.name}'>{quotation.name}</a> updated and submitted with procedure details.")
 		else:
 			quotation.insert(ignore_permissions=True)
+			quotation.submit()
 			self.db_set("quotation", quotation.name)
-			frappe.msgprint(f"Quotation <a href='/app/quotation/{quotation.name}'>{quotation.name}</a> automatically created for Procedure.")
+			frappe.db.commit()
+			frappe.msgprint(f"Quotation <a href='/app/quotation/{quotation.name}'>{quotation.name}</a> automatically created and submitted for Procedure.")

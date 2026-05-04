@@ -1,20 +1,21 @@
 {
  "actions": [],
- "allow_rename": 1,
  "autoname": "autoincrement",
- "naming_rule": "Autoincrement",
  "creation": "2026-04-14 10:43:29.805296",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "section_break_botl",
   "patient_name",
-  "patient_owner",
-  "doctor_name",
   "start_time",
-  "end_time",
-  "quotation",
   "medical_examination",
+  "column_break_kemw",
+  "patient_owner",
+  "end_time",
+  "column_break_pwqx",
+  "doctor_name",
+  "quotation",
+  "section_break_zqqp",
   "drugs"
  ],
  "fields": [
@@ -71,16 +72,28 @@
    "fieldtype": "Table",
    "label": "drugs",
    "options": "Drug Detail"
+  },
+  {
+   "fieldname": "column_break_kemw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_pwqx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_zqqp",
+   "fieldtype": "Section Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
- "istable": 0,
  "links": [],
- "modified": "2026-04-30 08:30:00.000000",
+ "modified": "2026-05-04 15:25:36.901559",
  "modified_by": "Administrator",
  "module": "Veterinary",
  "name": "Procedure",
+ "naming_rule": "Autoincrement",
  "owner": "Administrator",
  "permissions": [
   {
