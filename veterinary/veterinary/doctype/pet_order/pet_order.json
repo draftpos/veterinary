@@ -26,8 +26,7 @@
   "diagnosis",
   "complaint",
   "advices",
-  "section_break_njky",
-  "prescriptions"
+  "next_follow_up_date"
  ],
  "fields": [
   {
@@ -71,12 +70,6 @@
    "fieldtype": "Link",
    "label": "Patient owner",
    "options": "Customer"
-  },
-  {
-   "fieldname": "prescriptions",
-   "fieldtype": "Table",
-   "label": "Prescriptions",
-   "options": "Prescription Item"
   },
   {
    "fetch_from": "patient_name.patient_name",
@@ -151,21 +144,23 @@
    "label": "Advices"
   },
   {
+   "fetch_from": "quotation.custom_follow_up_date",
+   "fieldname": "next_follow_up_date",
+   "fieldtype": "Date",
+   "label": "Next Follow Up Date"
+  },
+  {
    "depends_on": "is_group",
    "fieldname": "patients",
    "fieldtype": "Link",
    "label": "Patients",
    "options": "Patient Name"
-  },
-  {
-   "fieldname": "section_break_njky",
-   "fieldtype": "Section Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-14 11:27:12.577783",
+ "modified": "2026-05-22 15:15:00.000000",
  "modified_by": "Administrator",
  "module": "Veterinary",
  "name": "Pet Order",

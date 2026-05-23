@@ -11,6 +11,7 @@
   "image",
   "patient_name",
   "patient_display_name",
+  "patient_card_no",
   "search_reference",
   "breed",
   "column_break_basic",
@@ -68,6 +69,14 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Patient Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "patient_name.patient_card_no",
+   "fieldname": "patient_card_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Patient Card No.",
    "read_only": 1
   },
   {
@@ -241,7 +250,7 @@
  ],
  "image_field": "image",
  "links": [],
- "modified": "2026-04-30 16:56:00.000000",
+ "modified": "2026-05-22 15:05:00.000000",
  "modified_by": "Administrator",
  "module": "Veterinary",
  "name": "Patient Details",

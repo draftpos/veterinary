@@ -34,6 +34,7 @@ class PatientName(Document):
             is_new = True
 
         # Explicitly sync all fetch_from fields (backend doesn't auto-populate these)
+        details.patient_card_no = self.patient_card_no
         details.patient_owner = self.patient_owner
         details.sex = self.sex
         details.species = self.species

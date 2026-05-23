@@ -332,7 +332,7 @@ def backfill_all_patient_details():
     all_patients = frappe.get_all(
         'Patient Name',
         fields=['name', 'patient_name', 'patient_owner', 'sex', 'species',
-                'breed', 'colour', 'dob', 'vaccinated', 'next_vaccination_date', 'image']
+                'breed', 'colour', 'dob', 'vaccinated', 'next_vaccination_date', 'image', 'patient_card_no']
     )
     created = 0
     updated = 0
@@ -343,6 +343,7 @@ def backfill_all_patient_details():
                 # Update existing — sync all fields
                 doc = frappe.get_doc('Patient Details', row.name)
                 doc.patient_owner = row.patient_owner
+                doc.patient_card_no = row.patient_card_no
                 doc.sex = row.sex
                 doc.species = row.species
                 doc.breed = row.breed
@@ -361,6 +362,7 @@ def backfill_all_patient_details():
                 doc = frappe.new_doc('Patient Details')
                 doc.patient_name = row.name
                 doc.patient_owner = row.patient_owner
+                doc.patient_card_no = row.patient_card_no
                 doc.sex = row.sex
                 doc.species = row.species
                 doc.breed = row.breed

@@ -20,6 +20,9 @@ def execute(filters=None):
     )
 
     columns = [
+        {"label": "Pet Order ID / Reference No.", "fieldname": "pet_order_id", "fieldtype": "Data"},
+        {"label": "Prescription ID", "fieldname": "prescription_id", "fieldtype": "Data"},
+        {"label": "Invoice No", "fieldname": "invoice_no", "fieldtype": "Data"},
         {"label": "Visit Date", "fieldname": "visit_date", "fieldtype": "Date"},
         {"label": "Patient", "fieldname": "patient_name", "fieldtype": "Data"},
         {"label": "Owner", "fieldname": "patient_owner", "fieldtype": "Data"},
@@ -66,6 +69,9 @@ def get_pet_history(patient_name=None, patient_owner=None,follow_up_date=None, f
     query = f"""
         SELECT
             po.name AS quotation,
+            GROUP_CONCAT(DISTINCT po2.name SEPARATOR ', ') AS pet_order_id,
+            GROUP_CONCAT(DISTINCT pi2.name SEPARATOR ', ') AS prescription_id,
+            po.custom_medication_receipt_no AS invoice_no,
             po.transaction_date AS visit_date,
 
             -- human-readable patient name
@@ -92,6 +98,13 @@ def get_pet_history(patient_name=None, patient_owner=None,follow_up_date=None, f
 
         LEFT JOIN `tabPatient Name` pn
             ON pn.name = pet.patient_name
+
+        LEFT JOIN `tabPet Order` po2
+            ON po2.quotation = po.name
+            AND po2.patient_name = pet.patient_name
+
+        LEFT JOIN `tabPrescription Item` pi2
+            ON pi2.parent = po2.name
 
         LEFT JOIN `tabQuotation Item` qi
             ON qi.parent = po.name

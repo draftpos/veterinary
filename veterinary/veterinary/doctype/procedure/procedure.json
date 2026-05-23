@@ -6,6 +6,7 @@
  "engine": "InnoDB",
  "field_order": [
   "section_break_botl",
+  "is_group",
   "patient_name",
   "start_time",
   "medical_examination",
@@ -15,13 +16,22 @@
   "column_break_pwqx",
   "doctor_name",
   "quotation",
+  "order_id",
+  "reference_number",
   "section_break_zqqp",
-  "drugs"
+  "prescriptions",
+  "section_break_procedures",
+  "procedure_types"
  ],
  "fields": [
   {
    "fieldname": "section_break_botl",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "is_group",
+   "fieldtype": "Check",
+   "label": "Is Group"
   },
   {
    "fieldname": "patient_name",
@@ -68,9 +78,19 @@
    "options": "Pet Order"
   },
   {
-   "fieldname": "drugs",
+   "fieldname": "order_id",
+   "fieldtype": "Data",
+   "label": "Order ID"
+  },
+{
+   "fieldname": "reference_number",
+   "fieldtype": "Data",
+   "label": "Reference Number"
+  },
+  {
+   "fieldname": "prescriptions",
    "fieldtype": "Table",
-   "label": "drugs",
+   "label": "Prescriptions",
    "options": "Drug Detail"
   },
   {
@@ -84,12 +104,25 @@
   {
    "fieldname": "section_break_zqqp",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_procedures",
+   "fieldtype": "Section Break",
+   "label": "Procedure Types",
+   "depends_on": "eval:doc.is_group"
+  },
+  {
+   "fieldname": "procedure_types",
+   "fieldtype": "Table",
+   "label": "Procedure Types",
+   "options": "Procedure Pet",
+   "depends_on": "eval:doc.is_group"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-05-04 15:25:36.901559",
+ "modified": "2026-05-22 15:30:00.000000",
  "modified_by": "Administrator",
  "module": "Veterinary",
  "name": "Procedure",
