@@ -114,8 +114,8 @@
   {
    "fieldname": "follow_up_date",
    "fieldtype": "Date",
-   "label": "Follow Up Date",
-   "read_only": 1
+   "in_list_view": 1,
+   "label": "Follow Up Date"
   },
   {
    "fieldname": "column_break_qawz",
@@ -252,11 +252,13 @@
   {
    "fieldname": "differential_diagnosis",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Differential Diagnosis"
   },
   {
    "fieldname": "diagnosis",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Diagnosis"
   },
   {
@@ -266,11 +268,13 @@
   {
    "fieldname": "complaint",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Complaint"
   },
   {
    "fieldname": "advices",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Advices"
   },
   {

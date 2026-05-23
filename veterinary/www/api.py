@@ -11,8 +11,10 @@ def before_save(doc, method):
 
     pet_details = getattr(doc, "custom_pet_details", None)
     if pet_details:
-        for row in pet_details:
-            row.follow_up_date = getattr(doc, "custom_follow_up_date", None)
+        follow_up = getattr(doc, "custom_follow_up_date", None) or getattr(doc, "custom_inline_next_follow_up_date", None)
+        if follow_up:
+            for row in pet_details:
+                row.follow_up_date = follow_up
 
     sync_veterinary_records(doc, method)
 
