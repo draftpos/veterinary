@@ -8,7 +8,6 @@
  "field_order": [
   "tab_break_general",
   "patient_details_section",
-  "column_break_xxxh",
   "patient_name",
   "patient_owner",
   "sex",
@@ -45,18 +44,19 @@
  ],
  "fields": [
   {
+   "allow_on_submit": 1,
    "fieldname": "tab_break_general",
    "fieldtype": "Section Break",
-   "label": "General",
-   "allow_on_submit": 1
+   "label": "General"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "patient_details_section",
    "fieldtype": "Section Break",
-   "label": "Patient Name",
-   "allow_on_submit": 1
+   "label": "Patient Name"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "patient_name",
    "fieldtype": "Link",
    "in_filter": 1,
@@ -65,19 +65,20 @@
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Patient Name",
-   "options": "Patient Name",
-   "allow_on_submit": 1
+   "options": "Patient Name"
   },
   {
+   "allow_on_submit": 1,
    "fetch_from": "patient_name.patient_owner",
    "fieldname": "patient_owner",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Patient Owner",
    "options": "Customer",
-   "reqd": 1,
-   "allow_on_submit": 1
+   "reqd": 1
   },
   {
+   "allow_on_submit": 1,
    "fetch_from": "patient_name.sex",
    "fieldname": "sex",
    "fieldtype": "Link",
@@ -87,15 +88,15 @@
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Sex",
-   "options": "Pet Sex",
-   "allow_on_submit": 1
+   "options": "Pet Sex"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "column_break_txdh",
-   "fieldtype": "Column Break",
-   "allow_on_submit": 1
+   "fieldtype": "Column Break"
   },
   {
+   "allow_on_submit": 1,
    "fetch_from": "patient_name.dob",
    "fieldname": "date_of_birth",
    "fieldtype": "Date",
@@ -103,10 +104,10 @@
    "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
-   "label": "Date of Birth",
-   "allow_on_submit": 1
+   "label": "Date of Birth"
   },
   {
+   "allow_on_submit": 1,
    "fetch_from": "patient_name.species",
    "fieldname": "species",
    "fieldtype": "Link",
@@ -116,22 +117,21 @@
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Species",
-   "options": "Species",
-   "allow_on_submit": 1
+   "options": "Species"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "follow_up_date",
    "fieldtype": "Date",
-   "in_list_view": 1,
-   "label": "Follow Up Date",
-   "allow_on_submit": 1
+   "label": "Follow Up Date"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "column_break_qawz",
-   "fieldtype": "Column Break",
-   "allow_on_submit": 1
+   "fieldtype": "Column Break"
   },
   {
+   "allow_on_submit": 1,
    "fetch_from": "patient_name.breed",
    "fieldname": "breed",
    "fieldtype": "Link",
@@ -141,10 +141,10 @@
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Breed",
-   "options": "Pet Breed",
-   "allow_on_submit": 1
+   "options": "Pet Breed"
   },
   {
+   "allow_on_submit": 1,
    "fetch_from": "patient_name.colour",
    "fieldname": "colour",
    "fieldtype": "Link",
@@ -154,178 +154,168 @@
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Colour",
-   "options": "Pet Colour",
-   "allow_on_submit": 1
+   "options": "Pet Colour"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "tab_break_vaccinations",
    "fieldtype": "Section Break",
-   "label": "Vaccinations",
-   "allow_on_submit": 1
+   "label": "Vaccinations"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "vaccinations",
    "fieldtype": "Table",
    "label": "Vaccinations",
-   "options": "Vaccination Detail",
-   "allow_on_submit": 1,
-   "hidden": 1
+   "options": "Vaccination Detail"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "tab_break_procedures",
    "fieldtype": "Section Break",
-   "label": "Procedures",
-   "allow_on_submit": 1
+   "label": "Procedures"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "tab_break_prescriptions",
    "fieldtype": "Section Break",
-   "label": "Prescriptions",
-   "allow_on_submit": 1
+   "hidden": 1,
+   "label": "Prescriptions"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "prescriptions",
    "fieldtype": "Table",
+   "hidden": 1,
    "label": "Prescriptions",
-   "options": "Prescription Item",
-   "allow_on_submit": 1,
-   "hidden": 1
+   "options": "Prescription Item"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "tab_break_medical_examination",
    "fieldtype": "Section Break",
-   "label": "Medical Examination",
-   "allow_on_submit": 1
+   "label": "Medical Examination"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "physical_exam_section",
    "fieldtype": "Section Break",
-   "label": "Physical Exam",
-   "allow_on_submit": 1
+   "label": "Physical Exam"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "hyd",
    "fieldtype": "Select",
    "in_filter": 1,
-   "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "HYD",
-   "options": "Normal\nAbnormal",
-   "allow_on_submit": 1
+   "options": "Normal\nAbnormal"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "column_break_mhnx",
-   "fieldtype": "Column Break",
-   "allow_on_submit": 1
+   "fieldtype": "Column Break"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "weight",
    "fieldtype": "Float",
    "in_filter": 1,
-   "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
-   "label": "Weight",
-   "allow_on_submit": 1
+   "label": "Weight"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "column_break_wzhy",
-   "fieldtype": "Column Break",
-   "allow_on_submit": 1
+   "fieldtype": "Column Break"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "crt",
    "fieldtype": "Data",
    "in_filter": 1,
-   "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
-   "label": "CRT",
-   "allow_on_submit": 1
+   "label": "CRT"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "column_break_wznw",
-   "fieldtype": "Column Break",
-   "allow_on_submit": 1
+   "fieldtype": "Column Break"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "rr",
    "fieldtype": "Float",
    "in_filter": 1,
-   "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
-   "label": "RR",
-   "allow_on_submit": 1
+   "label": "RR"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "column_break_eqdc",
-   "fieldtype": "Column Break",
-   "allow_on_submit": 1
+   "fieldtype": "Column Break"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "hr",
    "fieldtype": "Float",
    "in_filter": 1,
-   "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
-   "label": "HR",
-   "allow_on_submit": 1
+   "label": "HR"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "section_break_dbbm",
    "fieldtype": "Section Break",
-   "label": "Medicals",
-   "allow_on_submit": 1
+   "label": "Medicals"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "differential_diagnosis",
    "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Differential Diagnosis",
-   "allow_on_submit": 1
+   "label": "Differential Diagnosis"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "diagnosis",
    "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Diagnosis",
-   "allow_on_submit": 1
+   "label": "Diagnosis"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "column_break_kzmo",
-   "fieldtype": "Column Break",
-   "allow_on_submit": 1
+   "fieldtype": "Column Break"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "complaint",
    "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Complaint",
-   "allow_on_submit": 1
+   "label": "Complaint"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "advices",
    "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Advices",
-   "allow_on_submit": 1
+   "label": "Advices"
   },
   {
+   "allow_on_submit": 1,
    "default": "0",
    "fieldname": "is_admited",
    "fieldtype": "Check",
-   "label": "Is Admitted",
-   "allow_on_submit": 1
+   "label": "Is Admitted"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-12-10 11:16:51.517265",
+ "modified": "2026-05-24 12:45:42.155992",
  "modified_by": "Administrator",
  "module": "Veterinary",
  "name": "Pet Details",
@@ -333,7 +323,9 @@
  "permissions": [],
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "patient_name"
 }

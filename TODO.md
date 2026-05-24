@@ -1,5 +1,7 @@
-# Patient Details Test Data Tracker
+# Quotation Pet Details Grid Fix Tracker
 
-- [x] Fixed script with order_type='Prescription', 'Medical Examination', explicit names, delete old, create_patient_details call
-- [ ] Rerun `exec(open('/home/ashley/frappe-bench-v15/apps/veterinary/veterinary/create_test_patient_details_data.py').read())`
-- [ ] Check Patient Details list, open TEST-DOG-1 / TEST-CAT-1, all tables load
+- [x] Inspect Quotation + Pet Details metadata in fixtures (`custom_field.json`, `pet_details.json`)
+- [x] Inspect Quotation client scripts for child-table/grid overrides (`client_script.json`)
+- [x] Inspect property setters for Quotation/Pet Details field behavior (`property_setter.json`)
+- [x] Patch offending Quotation client script so Pet Details row editor (pencil) works and shows full child fields
+- [x] Verify fixture consistency and provide bench cache/migrate steps
