@@ -5,6 +5,23 @@ import frappe
 from frappe.model.document import Document
 
 class PatientName(Document):
+    def validate(self):
+        """
+        Ensure that the combination of patient_name and patient_owner is unique,
+        so a customer cannot have two pets with the same name.
+        """
+        if self.patient_name and self.patient_owner:
+            duplicate = frappe.db.exists('Patient Name', {
+                'patient_name': self.patient_name,
+                'patient_owner': self.patient_owner,
+                'name': ['!=', self.name]
+            })
+            if duplicate:
+                frappe.throw(
+                    frappe._("A patient named '{0}' already exists for owner '{1}'. Each customer's pet names must be unique.")
+                    .format(self.patient_name, self.patient_owner)
+                )
+
     def after_insert(self):
         """
         After a new Patient Name is created, automatically create the
