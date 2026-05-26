@@ -26,12 +26,15 @@ class PatientName(Document):
         NOTE: fetch_from fields are NOT automatically populated on the backend.
         We must explicitly copy values from Patient Name to Patient Details.
         """
-        if frappe.db.exists('Patient Details', self.name):
-            details = frappe.get_doc('Patient Details', self.name)
+        existing_name = frappe.db.get_value('Patient Details', {'patient_name': self.name}, 'name')
+        if not existing_name and frappe.db.exists('Patient Details', self.name):
+            existing_name = self.name
+
+        if existing_name:
+            details = frappe.get_doc('Patient Details', existing_name)
         else:
             details = frappe.new_doc('Patient Details')
             details.patient_name = self.name
-            is_new = True
 
         # Explicitly sync all fetch_from fields (backend doesn't auto-populate these)
         details.patient_card_no = self.patient_card_no

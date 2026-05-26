@@ -12,13 +12,13 @@ frappe.ui.form.on('Patient Details', {
 	},
 
 	refresh(frm) {
-		// Silently trigger URL migration in background
-		if (!frm.is_new() && frm.doc.name === frm.doc.patient_name) {
+		// Silently trigger URL migration back to plain ID in background if any are still formatted
+		if (!frm.is_new() && frm.doc.name !== frm.doc.patient_name) {
 			frappe.call({
 				method: 'veterinary.veterinary.doctype.patient_details.patient_details.migrate_patient_details_urls',
 				callback: function(r) {
 					if(r.message) {
-						frappe.msgprint("Migration renamed " + r.message + " records. The URL should update shortly. Please go back to the Patient Details list and re-open this patient!");
+						frappe.msgprint("Migration restored " + r.message + " Patient Details records back to plain integer IDs. Please refresh the page!");
 					}
 				}
 			});

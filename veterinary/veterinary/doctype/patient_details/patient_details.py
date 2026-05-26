@@ -191,29 +191,22 @@ def create_patient_details(patient_name):
 @frappe.whitelist()
 def migrate_patient_details_urls():
     """
-    Renames existing Patient Details records from their plain ID to the new format.
-    E.g., "3" -> "Bruno-3". This ensures the URL displays the name.
+    Renames existing Patient Details records from their formatted names back to plain ID format.
+    E.g., "Bruno-3" -> "3". This restores plain IDs (card number-like 1, 2, 3, etc.) as requested.
     """
     log_file = "/home/ashley/frappe-bench-v15/apps/veterinary/veterinary/veterinary/doctype/patient_details/migration.log"
     logs = []
     
-    records = frappe.get_all('Patient Details', fields=['name', 'patient_name', 'patient_display_name'])
+    records = frappe.get_all('Patient Details', fields=['name', 'patient_name'])
     renamed = 0
     logs.append(f"Found {len(records)} records")
     for r in records:
         logs.append(f"Processing: name='{r.name}', patient_name='{r.patient_name}'")
-        # If the name is just the patient_name ID (e.g. "3"), it needs migration
-        if str(r.name) == str(r.patient_name):
-            display_name = r.patient_display_name
-            if not display_name:
-                display_name = frappe.db.get_value('Patient Name', r.patient_name, 'patient_name') or "Pet"
-            
-            # Remove special characters that might break URLs
-            safe_display_name = "".join([c for c in display_name if c.isalnum() or c in (" ", "-", "_")]).strip()
-            
-            new_name = f"{safe_display_name}-{r.patient_name}"
+        # If the name is formatted (e.g. "Bruno-3") and not equal to the patient_name ID (e.g. "3")
+        if str(r.name) != str(r.patient_name):
+            new_name = str(r.patient_name)
             logs.append(f"  -> Target new name: {new_name}")
-            if r.name != new_name and not frappe.db.exists("Patient Details", new_name):
+            if not frappe.db.exists("Patient Details", new_name):
                 try:
                     frappe.rename_doc('Patient Details', r.name, new_name, ignore_permissions=True, force=True)
                     renamed += 1
@@ -230,7 +223,7 @@ def migrate_patient_details_urls():
     logs.append(f"Total renamed: {renamed}")
     try:
         with open(log_file, "w") as f:
-            f.write("\\n".join(logs))
+            f.write("\n".join(logs))
     except Exception as e:
         frappe.log_error("Failed to write migration log: " + str(e))
         
@@ -339,9 +332,13 @@ def backfill_all_patient_details():
 
     for row in all_patients:
         try:
-            if frappe.db.exists('Patient Details', row.name):
+            existing_name = frappe.db.get_value('Patient Details', {'patient_name': row.name}, 'name')
+            if not existing_name and frappe.db.exists('Patient Details', row.name):
+                existing_name = row.name
+
+            if existing_name:
                 # Update existing — sync all fields
-                doc = frappe.get_doc('Patient Details', row.name)
+                doc = frappe.get_doc('Patient Details', existing_name)
                 doc.patient_owner = row.patient_owner
                 doc.patient_card_no = row.patient_card_no
                 doc.sex = row.sex
