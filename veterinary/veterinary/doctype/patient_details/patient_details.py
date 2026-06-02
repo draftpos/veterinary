@@ -67,7 +67,7 @@ def get_billable_procedures():
             })
             frappe.db.commit()
         except Exception as e:
-            frappe.log_error(f"Failed to create custom field custom_is_procedure: {e}")
+            frappe.log_error(message=str(e), title="Failed to create custom field custom_is_procedure")
 
     # It should exist now, but fallback just in case
     has_custom_field = frappe.db.has_column('Item', 'custom_is_procedure')
@@ -194,7 +194,8 @@ def migrate_patient_details_urls():
     Renames existing Patient Details records from their formatted names back to plain ID format.
     E.g., "Bruno-3" -> "3". This restores plain IDs (card number-like 1, 2, 3, etc.) as requested.
     """
-    log_file = "/home/ashley/frappe-bench-v15/apps/veterinary/veterinary/veterinary/doctype/patient_details/migration.log"
+    import os
+    log_file = os.path.join(os.path.dirname(__file__), "migration.log")
     logs = []
     
     records = frappe.get_all('Patient Details', fields=['name', 'patient_name'])
@@ -212,7 +213,7 @@ def migrate_patient_details_urls():
                     renamed += 1
                     logs.append(f"  -> SUCCESS renamed to {new_name}")
                 except Exception as e:
-                    frappe.log_error(f"Failed to rename Patient Details {r.name}: {e}")
+                    frappe.log_error(message=str(e), title=f"Failed to rename Patient Details {r.name}")
                     logs.append(f"  -> FAILED: {str(e)}")
             else:
                 logs.append(f"  -> Skipped: new name exists or identical")
@@ -225,7 +226,7 @@ def migrate_patient_details_urls():
         with open(log_file, "w") as f:
             f.write("\n".join(logs))
     except Exception as e:
-        frappe.log_error("Failed to write migration log: " + str(e))
+        frappe.log_error(message=str(e), title="Failed to write migration log")
         
     return renamed
 
