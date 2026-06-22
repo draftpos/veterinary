@@ -20,22 +20,26 @@
    "fieldname": "drug_item",
    "fieldtype": "Link",
    "label": "drug item",
-   "options": "Item"
+   "options": "Item",
+   "in_list_view": 1
   },
   {
    "fieldname": "quantity",
    "fieldtype": "Float",
-   "label": "quantity"
+   "label": "quantity",
+   "in_list_view": 1
   },
   {
    "fieldname": "dosage",
    "fieldtype": "Small Text",
-   "label": "Dosage"
+   "label": "Dosage",
+   "in_list_view": 1
   },
   {
    "fieldname": "instructions",
    "fieldtype": "Small Text",
-   "label": "Instructions"
+   "label": "Instructions",
+   "in_list_view": 1
   }
  ],
  "grid_page_length": 50,

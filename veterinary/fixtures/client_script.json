@@ -3,6 +3,28 @@
   "docstatus": 0,
   "doctype": "Client Script",
   "dt": "Quotation",
+  "enabled": 1,
+  "modified": "2026-04-16 12:19:33.148097",
+  "module": "Veterinary",
+  "name": "Quotation-Veterinary",
+  "script": "frappe.ui.form.on(\"Quotation\", {\n    refresh: function(frm) {\n        set_doctor_in_admissions(frm);\n        hide_nights_column(frm);\n    },\n    onload: function(frm) {\n        hide_nights_column(frm);\n    }\n});\n\nfrappe.ui.form.on(\"Admissions\", {\n    form_render: function(frm, cdt, cdn) {\n        let row = locals[cdt][cdn];\n        if (!row.doctorname) {\n            frappe.model.set_value(cdt, cdn, \"doctorname\", frappe.session.user);\n        }\n    }\n});\n\nfrappe.ui.form.on(\"Quotation Item\", {\n    form_render: function(frm, cdt, cdn) {\n        hide_nights_column(frm);\n    }\n});\n\nfunction set_doctor_in_admissions(frm) {\n    if (frm.doc.custom_admissions_table && frm.doc.custom_admissions_table.length) {\n        frm.doc.custom_admissions_table.forEach(function(row) {\n            if (!row.doctorname) {\n                frappe.model.set_value(row.doctype, row.name, \"doctorname\", frappe.session.user);\n            }\n        });\n    }\n}\n\nfunction hide_nights_column(frm) {\n    setTimeout(function() {\n        let grid = frm.get_field(\"items\") && frm.get_field(\"items\").grid;\n        if (grid) {\n            grid.toggle_display(\"nights\", false);\n            grid.refresh();\n        }\n    }, 500);\n}\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Quotation",
+  "enabled": 1,
+  "modified": "2026-04-16 13:27:41.094410",
+  "module": "Veterinary",
+  "name": "Quotation-Doctor-Nights-Vet",
+  "script": "frappe.ui.form.on(\"Quotation\", {\n    refresh: function(frm) {\n        set_doctor_in_admissions(frm);\n        hide_nights_column(frm);\n    },\n    onload: function(frm) {\n        hide_nights_column(frm);\n    }\n});\n\nfrappe.ui.form.on(\"Admissions\", {\n    form_render: function(frm, cdt, cdn) {\n        let row = locals[cdt][cdn];\n        if (!row.doctorname) {\n            frappe.model.set_value(cdt, cdn, \"doctorname\", frappe.session.user);\n        }\n    }\n});\n\nfunction set_doctor_in_admissions(frm) {\n    if (frm.doc.custom_admissions_table && frm.doc.custom_admissions_table.length) {\n        frm.doc.custom_admissions_table.forEach(function(row) {\n            if (!row.doctorname) {\n                frappe.model.set_value(row.doctype, row.name, \"doctorname\", frappe.session.user);\n            }\n        });\n    }\n}\n\nfunction hide_nights_column(frm) {\n    setTimeout(function() {\n        let grid = frm.get_field(\"items\") && frm.get_field(\"items\").grid;\n        if (grid) {\n            grid.toggle_display(\"nights\", false);\n            grid.refresh();\n        }\n    }, 500);\n}\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Quotation",
   "enabled": 0,
   "modified": "2026-04-16 08:57:54.114383",
   "module": "Veterinary",

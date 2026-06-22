@@ -23,34 +23,40 @@
    "fieldname": "vaccine",
    "fieldtype": "Link",
    "label": "vaccine",
-   "options": "Item"
+   "options": "Item",
+   "in_list_view": 1
   },
   {
    "fieldname": "batch",
    "fieldtype": "Data",
-   "label": "batch"
+   "label": "batch",
+   "in_list_view": 1
   },
   {
    "fieldname": "date",
    "fieldtype": "Datetime",
-   "label": "date"
+   "label": "date",
+   "in_list_view": 1
   },
   {
    "fieldname": "user",
    "fieldtype": "Link",
    "label": "user",
-   "options": "User"
+   "options": "User",
+   "in_list_view": 1
   },
   {
    "fieldname": "next_follow_up_date",
    "fieldtype": "Date",
-   "label": "next follow up date"
+   "label": "next follow up date",
+   "in_list_view": 1
   },
   {
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "status",
-   "options": "Draft/Complete/Pending"
+   "options": "Draft/Complete/Pending",
+   "in_list_view": 1
   }
  ],
  "grid_page_length": 50,
