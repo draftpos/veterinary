@@ -119,9 +119,16 @@ def sync_veterinary_records(doc, method):
         order.set("prescriptions", [])
         if pet["prescriptions"]:
             for p in pet["prescriptions"]:
+                item_code = getattr(p, "item_code", getattr(p, "item_name", getattr(p, "drug_item", None)))
+                item_info = frappe.db.get_value("Item", item_code, ["item_name", "stock_uom"], as_dict=True) if item_code else {}
+                
                 order.append("prescriptions", {
-                    "item_name": p.item_name,
+                    "item_code": item_code,
+                    "item_name": item_info.get("item_name") or item_code,
+                    "uom": getattr(p, "uom", None) or item_info.get("stock_uom") or "Nos",
+                    "stock_uom": getattr(p, "uom", None) or item_info.get("stock_uom") or "Nos",
                     "quantity": p.quantity,
+                    "qty": getattr(p, "qty", p.quantity),
                     "dosage": p.dosage,
                     "amount": p.amount
                 })
