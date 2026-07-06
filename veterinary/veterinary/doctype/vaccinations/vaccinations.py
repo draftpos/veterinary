@@ -94,8 +94,11 @@ class Vaccinations(Document):
         if self.vaccination_details:
             for row in self.vaccination_details:
                 if row.vaccine:
+                    item_info = frappe.db.get_value("Item", row.vaccine, ["item_name", "stock_uom"], as_dict=True) or {}
                     quotation.append("items", {
                         "item_code": row.vaccine,
+                        "item_name": item_info.get("item_name") or row.vaccine,
+                        "uom": item_info.get("stock_uom") or "Nos",
                         "qty": 1,
                     })
                     has_new_items = True

@@ -101,8 +101,11 @@ class Procedure(Document):
 		if self.drugs:
 			for row in self.drugs:
 				if row.drug_item:
+					item_info = frappe.db.get_value("Item", row.drug_item, ["item_name", "stock_uom"], as_dict=True) or {}
 					quotation.append("items", {
 						"item_code": row.drug_item,
+						"item_name": item_info.get("item_name") or row.drug_item,
+						"uom": item_info.get("stock_uom") or "Nos",
 						"qty": row.quantity or 1,
 					})
 					has_new_items = True
@@ -110,8 +113,11 @@ class Procedure(Document):
 		if not has_new_items and not self.quotation: # Only add default if creating new and no drugs
 			procedure_item = frappe.db.get_value("Item", {"custom_is_procedure": 1}, "name")
 			if procedure_item:
+				item_info = frappe.db.get_value("Item", procedure_item, ["item_name", "stock_uom"], as_dict=True) or {}
 				quotation.append("items", {
 					"item_code": procedure_item,
+					"item_name": item_info.get("item_name") or procedure_item,
+					"uom": item_info.get("stock_uom") or "Nos",
 					"qty": 1,
 				})
 				has_new_items = True
