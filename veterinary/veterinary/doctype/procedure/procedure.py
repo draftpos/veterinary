@@ -99,9 +99,9 @@ class Procedure(Document):
 
 		# Add items
 		has_new_items = False
-		if self.drugs:
-			for row in self.drugs:
-				if row.drug_item:
+		if self.get("prescriptions"):
+			for row in self.get("prescriptions"):
+				if getattr(row, "drug_item", None):
 					item_info = frappe.db.get_value("Item", row.drug_item, ["item_name", "stock_uom"], as_dict=True) or {}
 					quotation.append("items", {
 						"item_code": row.drug_item,
