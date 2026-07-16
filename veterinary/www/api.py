@@ -40,7 +40,7 @@ def sync_veterinary_records(doc, method):
     custom_pet_details = getattr(doc, "custom_pet_details", None)
 
     if not custom_patient_name and not (custom_is_group and custom_pet_details):
-        return
+        pass # Allow it to continue to process Procedures or Vaccinations even if Patient Name is empty
 
     # Collect pets to process
     pets_to_sync = []
