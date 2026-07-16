@@ -20,7 +20,8 @@ class Procedure(Document):
 			frappe.db.set_value("Quotation", self.quotation, "custom_procedure_payment_status", self.custom_payment_status)
 
 	def after_insert(self):
-		self.sync_quotation()
+		if not self.flags.ignore_sync_quotation:
+			self.sync_quotation()
 
 	def sync_quotation(self):
 		from frappe.utils import today

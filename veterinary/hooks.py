@@ -250,6 +250,9 @@ fixtures = [
 ]
 
 doc_events = {
+    "*": {
+        "autoname": "veterinary.www.api.global_autoname"
+    },
     "Quotation": {
         "before_save": "veterinary.www.api.before_save"
     }
