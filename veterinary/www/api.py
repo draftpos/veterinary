@@ -28,6 +28,8 @@ def before_save(doc, method):
             for row in pet_details:
                 row.follow_up_date = follow_up
 
+@frappe.whitelist(allow_guest=True)
+def on_update(doc, method):
     sync_veterinary_records(doc, method)
 
 

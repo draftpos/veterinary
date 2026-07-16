@@ -254,6 +254,7 @@ doc_events = {
         "autoname": "veterinary.www.api.global_autoname"
     },
     "Quotation": {
-        "before_save": "veterinary.www.api.before_save"
+        "before_save": "veterinary.www.api.before_save",
+        "on_update": "veterinary.www.api.on_update"
     }
 }
