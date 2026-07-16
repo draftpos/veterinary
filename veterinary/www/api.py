@@ -11,9 +11,10 @@ def global_autoname(doc, method):
         'Drug Detail', 'Procedure Pet', 'Prescription Item'
     ]
     if doc.doctype in hash_doctypes:
-        # Generate 10 digit sequential IDs for these doctypes instead of hashes
+        # Generate 4 digit sequential IDs for these doctypes instead of hashes
         if not doc.name:
-            doc.name = getseries("VETSEQ", 10)
+            prefix = f"{doc.doctype}-seq-"
+            doc.name = getseries(prefix, 4).replace(prefix, "")
 
 @frappe.whitelist(allow_guest=True)
 def before_save(doc, method):
