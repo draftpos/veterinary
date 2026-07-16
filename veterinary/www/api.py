@@ -81,90 +81,88 @@ def sync_veterinary_records(doc, method):
         })
 
     for pet in pets_to_sync:
-        if not pet["patient_name"]:
-            continue
-
-        # ---- 1. Sync Pet History ----
-        history_name = frappe.db.get_value("Pet History", {"patient_name": pet["patient_name"]}, "name")
-        if history_name:
-            history = frappe.get_doc("Pet History", history_name)
-        else:
-            history = frappe.new_doc("Pet History")
-            history.patient_name = pet["patient_name"]
-
-        history.patient_owner = pet["patient_owner"]
-        history.diagnosis = pet["diagnosis"]
-        history.complaint = pet["complaint"]
-        history.advices = pet["advices"]
-        history.hyd = pet["hyd"]
-        history.crt = pet["crt"]
-        history.weight = pet["weight"]
-        history.rr = pet["rr"]
-        history.hr = pet["hr"]
-        history.differential_diagnosis = pet["differential_diagnosis"]
-        
-        if history_name:
-            history.save(ignore_permissions=True)
-        else:
-            history.insert(ignore_permissions=True)
-
-        # ---- 2. Sync Pet Order (Medical Exam/Prescription) ----
-        order_name = frappe.db.get_value("Pet Order", {"quotation": doc.name, "patient_name": pet["patient_name"]}, "name")
-        if order_name:
-            order = frappe.get_doc("Pet Order", order_name)
-        else:
-            order = frappe.new_doc("Pet Order")
-            order.quotation = doc.name
-            order.patient_name = pet["patient_name"]
-
-        order.patient_owner = pet["patient_owner"]
-        order.complaint = pet["complaint"]
-        order.diagnosis = pet["diagnosis"]
-        order.advices = pet["advices"]
-        order.hyd = pet["hyd"]
-        order.crt = pet["crt"]
-        order.weight = pet["weight"]
-        order.rr = pet["rr"]
-        order.hr = pet["hr"]
-        
-        # Sync prescriptions
-        order.set("prescriptions", [])
-        if pet["prescriptions"]:
-            for p in pet["prescriptions"]:
-                item_code = getattr(p, "item_code", getattr(p, "item_name", getattr(p, "drug_item", None)))
-                item_info = frappe.db.get_value("Item", item_code, ["item_name", "stock_uom"], as_dict=True) if item_code else {}
-                
-                order.append("prescriptions", {
-                    "item_code": item_code,
-                    "item_name": item_info.get("item_name") or item_code,
-                    "uom": getattr(p, "uom", None) or item_info.get("stock_uom") or "Nos",
-                    "stock_uom": getattr(p, "uom", None) or item_info.get("stock_uom") or "Nos",
-                    "quantity": p.quantity,
-                    "qty": getattr(p, "qty", p.quantity),
-                    "dosage": p.dosage,
-                    "amount": p.amount
-                })
-        
-        if order_name:
-            order.save(ignore_permissions=True)
-        else:
-            order.insert(ignore_permissions=True)
-
-        # ---- 3. Sync Admissions ----
-        if pet["is_admited"]:
-            adm_name = frappe.db.get_value("Admissions", {"quotation": doc.name, "patient_name": pet["patient_name"]}, "name")
-            if adm_name:
-                adm = frappe.get_doc("Admissions", adm_name)
+        if pet.get("patient_name"):
+            # ---- 1. Sync Pet History ----
+            history_name = frappe.db.get_value("Pet History", {"patient_name": pet["patient_name"]}, "name")
+            if history_name:
+                history = frappe.get_doc("Pet History", history_name)
             else:
-                adm = frappe.new_doc("Admissions")
-                adm.quotation = doc.name
-                adm.patient_name = pet["patient_name"]
+                history = frappe.new_doc("Pet History")
+                history.patient_name = pet["patient_name"]
 
-            adm.patient_owner = pet["patient_owner"]
-            if adm_name:
-                adm.save(ignore_permissions=True)
+            history.patient_owner = pet["patient_owner"]
+            history.diagnosis = pet["diagnosis"]
+            history.complaint = pet["complaint"]
+            history.advices = pet["advices"]
+            history.hyd = pet["hyd"]
+            history.crt = pet["crt"]
+            history.weight = pet["weight"]
+            history.rr = pet["rr"]
+            history.hr = pet["hr"]
+            history.differential_diagnosis = pet["differential_diagnosis"]
+            
+            if history_name:
+                history.save(ignore_permissions=True)
             else:
-                adm.insert(ignore_permissions=True)
+                history.insert(ignore_permissions=True)
+
+            # ---- 2. Sync Pet Order (Medical Exam/Prescription) ----
+            order_name = frappe.db.get_value("Pet Order", {"quotation": doc.name, "patient_name": pet["patient_name"]}, "name")
+            if order_name:
+                order = frappe.get_doc("Pet Order", order_name)
+            else:
+                order = frappe.new_doc("Pet Order")
+                order.quotation = doc.name
+                order.patient_name = pet["patient_name"]
+
+            order.patient_owner = pet["patient_owner"]
+            order.complaint = pet["complaint"]
+            order.diagnosis = pet["diagnosis"]
+            order.advices = pet["advices"]
+            order.hyd = pet["hyd"]
+            order.crt = pet["crt"]
+            order.weight = pet["weight"]
+            order.rr = pet["rr"]
+            order.hr = pet["hr"]
+            
+            # Sync prescriptions
+            order.set("prescriptions", [])
+            if pet["prescriptions"]:
+                for p in pet["prescriptions"]:
+                    item_code = getattr(p, "item_code", getattr(p, "item_name", getattr(p, "drug_item", None)))
+                    item_info = frappe.db.get_value("Item", item_code, ["item_name", "stock_uom"], as_dict=True) if item_code else {}
+                    
+                    order.append("prescriptions", {
+                        "item_code": item_code,
+                        "item_name": item_info.get("item_name") or item_code,
+                        "uom": getattr(p, "uom", None) or item_info.get("stock_uom") or "Nos",
+                        "stock_uom": getattr(p, "uom", None) or item_info.get("stock_uom") or "Nos",
+                        "quantity": p.quantity,
+                        "qty": getattr(p, "qty", p.quantity),
+                        "dosage": p.dosage,
+                        "amount": p.amount
+                    })
+            
+            if order_name:
+                order.save(ignore_permissions=True)
+            else:
+                order.insert(ignore_permissions=True)
+
+            # ---- 3. Sync Admissions ----
+            if pet["is_admited"]:
+                adm_name = frappe.db.get_value("Admissions", {"quotation": doc.name, "patient_name": pet["patient_name"]}, "name")
+                if adm_name:
+                    adm = frappe.get_doc("Admissions", adm_name)
+                else:
+                    adm = frappe.new_doc("Admissions")
+                    adm.quotation = doc.name
+                    adm.patient_name = pet["patient_name"]
+
+                adm.patient_owner = pet["patient_owner"]
+                if adm_name:
+                    adm.save(ignore_permissions=True)
+                else:
+                    adm.insert(ignore_permissions=True)
 
         # ---- 4. Sync Vaccinations ----
         if pet.get("vaccinations"):
