@@ -33,6 +33,16 @@
   "hyd",
   "column_break_mqqu",
   "crt",
+  "section_hist_bse",
+  "history",
+  "column_break_hist_bse",
+  "body_system_eval",
+  "section_ddx_dx_rx",
+  "ddx",
+  "column_break_ddx",
+  "dx",
+  "column_break_dx",
+  "rx",
   "conclusions_section",
   "complaint",
   "column_break_uthp",
@@ -227,6 +237,56 @@
    "label": "CRT"
   },
   {
+   "fieldname": "section_hist_bse",
+   "fieldtype": "Section Break",
+   "label": "History & Body System Evaluation"
+  },
+  {
+   "fieldname": "history",
+   "fieldtype": "Small Text",
+   "label": "History"
+  },
+  {
+   "fieldname": "column_break_hist_bse",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "body_system_eval",
+   "fieldtype": "Small Text",
+   "label": "Body System Evaluation"
+  },
+  {
+   "fieldname": "section_ddx_dx_rx",
+   "fieldtype": "Section Break",
+   "label": "DDX / DX / RX"
+  },
+  {
+   "fieldname": "ddx",
+   "fieldtype": "Data",
+   "label": "DDX"
+  },
+  {
+   "fieldname": "column_break_ddx",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "dx",
+   "fieldtype": "Data",
+   "label": "DX"
+  },
+  {
+   "fieldname": "column_break_dx",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "rx",
+   "fieldtype": "Data",
+   "label": "RX"
+  },
+  {
    "fieldname": "conclusions_section",
    "fieldtype": "Section Break",
    "label": "Conclusions"
@@ -270,7 +330,7 @@
  "index_web_pages_for_search": 1,
  "istable": 0,
  "links": [],
- "modified": "2026-04-30 14:45:00.000000",
+ "modified": "2026-07-18 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "Veterinary",
  "name": "Pet History",
