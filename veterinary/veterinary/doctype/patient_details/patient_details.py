@@ -34,14 +34,14 @@ def get_patient_history(patient_name):
         'pet_history': _safe_get_all(
             'Pet History',
             {'patient_name': patient_name},
-            ['name', 'visit_date', 'weight', 'complaint', 'diagnosis', 'advices'],
+            ['name', 'visit_date', 'weight', 'complaint', 'history', 'body_system_eval', 'diagnosis', 'ddx', 'dx', 'rx', 'advices'],
             'visit_date desc'
         ),
         'prescriptions_history': _get_prescription_details(patient_name),
         'medical_exam_history': _safe_get_all(
             'Pet Order',
             {'patient_name': patient_name},
-            ['name', 'quotation', 'complaint', 'diagnosis', 'advices', 'hyd', 'crt', 'weight', 'rr', 'hr', 'modified'],
+            ['name', 'quotation', 'complaint', 'history', 'body_system_eval', 'diagnosis', 'ddx', 'dx', 'rx', 'advices', 'hyd', 'crt', 'weight', 'rr', 'hr', 'modified'],
             'modified desc'
         ),
         'admissions_history': _get_admissions_history(patient_name),

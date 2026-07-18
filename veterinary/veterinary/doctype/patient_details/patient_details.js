@@ -239,8 +239,13 @@ function _load_histories(frm) {
 			_render_table('medical-exam-table', d.medical_exam_history, [
 				{ key: 'name',      label: 'Exam No', is_link: true, doctype: 'Pet Order' },
 				{ key: 'quotation', label: 'Quotation/Ref', is_link: true, doctype: 'Quotation' },
+				{ key: 'history',   label: 'History' },
+				{ key: 'body_system_eval', label: 'Body System Eval' },
 				{ key: 'complaint', label: 'Complaint' },
 				{ key: 'diagnosis', label: 'Diagnosis' },
+				{ key: 'ddx',       label: 'DDX' },
+				{ key: 'dx',        label: 'DX' },
+				{ key: 'rx',        label: 'RX' },
 				{ key: 'advices',   label: 'Advices' },
 				{ key: 'hyd',       label: 'HYD' },
 				{ key: 'crt',       label: 'CRT' },
