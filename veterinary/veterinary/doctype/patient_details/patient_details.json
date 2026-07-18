@@ -95,6 +95,7 @@
    "fieldname": "patient_owner",
    "fieldtype": "Link",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Patient Owner",
    "options": "Customer",
    "read_only": 1
@@ -276,5 +277,5 @@
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
- "title_field": "patient_name"
+ "title_field": "patient_display_name"
 }

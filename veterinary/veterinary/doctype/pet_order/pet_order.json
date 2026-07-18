@@ -16,11 +16,16 @@
   "custom_patient_name_display",
   "patients",
   "physical_examination_section",
+  "history",
+  "body_system_eval",
   "hyd",
   "crt",
   "weight",
   "rr",
   "hr",
+  "ddx",
+  "dx",
+  "rx",
   "section_break_njzr",
   "differential_diagnosis",
   "diagnosis",
@@ -84,6 +89,31 @@
    "fieldname": "physical_examination_section",
    "fieldtype": "Section Break",
    "label": "Physical Examination"
+  },
+  {
+   "fieldname": "history",
+   "fieldtype": "Small Text",
+   "label": "History"
+  },
+  {
+   "fieldname": "body_system_eval",
+   "fieldtype": "Small Text",
+   "label": "Body System Evaluation"
+  },
+  {
+   "fieldname": "ddx",
+   "fieldtype": "Data",
+   "label": "DDX"
+  },
+  {
+   "fieldname": "dx",
+   "fieldtype": "Data",
+   "label": "DX"
+  },
+  {
+   "fieldname": "rx",
+   "fieldtype": "Data",
+   "label": "RX"
   },
   {
    "fieldname": "hyd",
